@@ -1,0 +1,63 @@
+.btn {
+  position: absolute;
+  left: -35px;
+  background-color: #f1f3f4;
+  border-radius: 3px;
+  padding: 0 5px;
+  -webkit-box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.75);
+}
+
+.sokoban-wrap {
+  padding: 10px;
+}
+
+.focus {
+  background-image: repeating-linear-gradient(
+      0deg,
+      #333333,
+      #333333 10px,
+      transparent 10px,
+      transparent 20px,
+      #333333 20px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      #333333,
+      #333333 10px,
+      transparent 10px,
+      transparent 20px,
+      #333333 20px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      #333333,
+      #333333 10px,
+      transparent 10px,
+      transparent 20px,
+      #333333 20px
+    ),
+    repeating-linear-gradient(
+      270deg,
+      #333333,
+      #333333 10px,
+      transparent 10px,
+      transparent 20px,
+      #333333 20px
+    );
+  background-size: 3px calc(100% + 20px), calc(100% + 20px) 3px,
+    3px calc(100% + 20px), calc(100% + 20px) 3px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+  animation: borderAnimation 1s infinite linear;
+}
+
+@keyframes borderAnimation {
+  from {
+    background-position: 0 0, -20px 0, 100% -20px, 0 100%;
+  }
+  to {
+    background-position: 0 -20px, 0 0, 100% 0, -20px 100%;
+  }
+}

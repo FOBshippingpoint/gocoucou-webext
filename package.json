@@ -1,0 +1,45 @@
+{
+  "name": "goocoucou",
+  "version": "1.0.0",
+  "description": "Google search result navigator",
+  "main": "index.js",
+  "default_locale": "zh-TW",
+  "scripts": {
+    "preprocess": "pnpm esmo ./scripts/preprocess.ts",
+    "dev": "pnpm npm-run-all preprocess start",
+    "start": "parcel src/manifest.json --host localhost --target webext-dev --config @parcel/config-webextension",
+    "build": "parcel build src/manifest.json --target webext-prod --config @parcel/config-webextension",
+    "start:firefox": "web-ext run --source-dir ./dist",
+    "lint": "pnpm web-ext lint --source-dir dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/config-webextension": "^2.3.2",
+    "@parcel/core": "^2.3.2",
+    "chokidar": "^3.5.3",
+    "fs-extra": "^10.0.1",
+    "parcel": "^2.3.2",
+    "webextension-polyfill": "^0.8.0"
+  },
+  "targets": {
+    "webext-dev": {
+      "sourceMap": {
+        "inline": true,
+        "inlineSources": true
+      }
+    },
+    "webext-prod": {}
+  },
+  "dependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/webextension-polyfill": "^0.8.2",
+    "chalk": "^5.0.1",
+    "child_process": "^1.0.2",
+    "esmo": "^0.14.1",
+    "kolorist": "^1.5.1",
+    "log-symbols": "^5.1.0",
+    "npm-run-all": "^4.1.5",
+    "umbrellajs": "^3.3.1"
+  }
+}

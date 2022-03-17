@@ -1,0 +1,51 @@
+{
+  "manifest_version": 2,
+  "name": "goocoucou",
+  "version": "1.0.0",
+  "description": "Google search result navigator",
+  "browser_action": {
+    "default_popup": "popup/index.html"
+  },
+  "options_ui": {
+    "page": "options/index.html",
+    "open_in_tab": true,
+    "chrome_style": false
+  },
+  "background": {
+    "scripts": [
+      "background/index.ts"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.google.com/*"
+      ],
+      "js": [
+        "content-scripts/index.ts"
+      ],
+      "css": [
+        "content-scripts/index.css"
+      ]
+    }
+  ],
+  "default_locale": "en",
+  "commands": {
+    "toggle-feature": {
+      "suggested_key": {
+        "default": "Alt+Shift+U",
+        "linux": "Ctrl+Shift+U"
+      },
+      "description": "Send a 'toggle-feature' event to the extension"
+    },
+    "do-another-thing": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y"
+      }
+    }
+  },
+  "permissions": [
+    "tabs",
+    "storage"
+  ]
+}
