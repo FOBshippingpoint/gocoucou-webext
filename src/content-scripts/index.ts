@@ -147,17 +147,17 @@ browser.storage.local.get({ shortcuts: defaultShortcuts }).then(
 
 function shortcutMapping(e: KeyboardEvent) {
   // debug print
-  if (false) {
+  if (true) {
     ["ctrlKey", "shiftKey", "altKey", "metaKey", "key"].forEach((key) => {
       console.log(key, ":", e[key]);
     });
   }
 
-  if (!defaultShortcuts) return;
+  if (!shortcuts) return;
 
   let command: string;
-  for (const prop in defaultShortcuts) {
-    const shortcut = defaultShortcuts[prop];
+  for (const prop in shortcuts) {
+    const shortcut = shortcuts[prop];
     if (Object.keys(shortcut).every((key) => shortcut[key] === e[key])) {
       command = prop;
       break;

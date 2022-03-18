@@ -40,8 +40,39 @@
     "description": "The shortcut description for options page."
   },
 
-  "reset": {
+  "shortcut-jump-to-result-keys": {
+    "message": "Jump to result keys",
+    "description": "The shortcut description for options page."
+  },
+
+  "reset-button": {
     "message": "Reset",
     "description": "Reset current shortcut to default."
+  },
+
+  "save-button": {
+    "message": "Save",
+    "description": "Save settings."
+  },
+
+  "shortcut-too-long": {
+    "message": "Must be less than or equal to $MAX_NUM$.",
+    "description": "Jump to result keys invalid info.",
+    "placeholders": {
+      "MAX_NUM": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+
+  "must-be-unique-list": {
+    "message": "Must be unique list.",
+    "description": "Jump to result keys invalid info."
+  },
+
+  "valid-shortcut": {
+    "message": "OK :)",
+    "description": "Jump to result keys valid info."
   }
 }

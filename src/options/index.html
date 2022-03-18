@@ -22,26 +22,32 @@
 			<fieldset>
 				<div class="pure-control-group">
 					<label for="upward" data-msg="shortcut-upward">Move to previous result</label>
-					<input type="text" id="upward" placeholder="" />
-					<button type="button" data-msg="reset" class="pure-button">reset</button>
+					<input type="text" id="upward" />
+					<button type="button" data-msg="reset-button" class="pure-button reset">reset</button>
 				</div>
 				<div class="pure-control-group">
 					<label for="downward" data-msg="shortcut-downward">Move to next result</label>
-					<input type="text" id="downward" placeholder="" />
-					<button type="button" data-msg="reset" class="pure-button">reset</button>
+					<input type="text" id="downward" />
+					<button type="button" data-msg="reset-button" class="pure-button reset">reset</button>
 				</div>
 				<div class="pure-control-group">
 					<label for="open-in-current-tab" data-msg="shortcut-open-in-current-tab">Open selected result in current
 						tab</label>
-					<input type="text" id="open-in-current-tab" placeholder="" />
-					<button type="button" data-msg="reset" class="pure-button">reset</button>
+					<input type="text" id="open-in-current-tab" />
+					<button type="button" data-msg="reset-button" class="pure-button reset">reset</button>
 				</div>
 				<div class="pure-control-group">
-					<label for="activate" data-msg="activate">Activate</label>
-					<input type="checkbox" id="activate" />
+					<label for="jump-to-result-keys" data-msg="shortcut-jump-to-result-keys">Jump to result keys</label>
+					<input type="text" id="jump-to-result-keys" />
+					<button type="button" data-msg="reset-button" class="pure-button reset">reset</button>
+					<span id="jump-to-result-keys-inline-message" class="pure-form-message-inline"></span>
 				</div>
+				<!-- <div class="pure-control-group">
+					<label for="activate" data-msg="activate-extension">Activate</label>
+					<input type="checkbox" id="activate" />
+				</div> -->
 				<div class="pure-controls">
-					<button type="submit" class="pure-button pure-button-primary">Submit</button>
+					<button type="submit" data-msg="save-button" class="pure-button pure-button-primary">Save</button>
 				</div>
 			</fieldset>
 		</form>

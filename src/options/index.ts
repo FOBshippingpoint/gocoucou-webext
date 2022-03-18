@@ -1,85 +1,104 @@
 import browser from "webextension-polyfill";
 import u from "umbrellajs";
-import { Shortcut } from "../types";
 import { defaultShortcuts } from "../settings/default-shortcuts";
+import {
+  isModifierOnly,
+  keyboardEvent2shortcut,
+  shortcut2text,
+} from "../utils/shortcut-utils";
 
-// replace translated
+// translate
 u("[data-msg]").each(function (node) {
   const key = u(node).data("msg");
   const text = browser.i18n.getMessage(key);
   u(node).text(text === "" ? key : text);
 });
 
+let formShortcuts = {};
+
+// init shortcuts
 browser.storage.local.get({ shortcuts: defaultShortcuts }).then(
   ({ shortcuts }) => {
     console.log(shortcuts);
     u("input").each(function (node) {
       const command = u(node).attr("id");
       const shortcut = shortcuts[command];
-      u(node).attr("value", shortcut2Text(shortcut));
+      console.log("shortcut", command, shortcut);
+      u(node).attr("value", shortcut2text(shortcut));
     });
+    formShortcuts = shortcuts;
   },
   (err) => {
     console.log(err);
   }
 );
 
-// init shortcuts
+u("input")
+  .not("#jump-to-result-keys")
+  .on("keydown", function (e: KeyboardEvent) {
+    if (e.key === "Tab") return;
+    e.preventDefault();
+    const input: HTMLInputElement = u(e.target).first();
+    formShortcuts[input.id] = keyboardEvent2shortcut(e);
+    input.value = shortcut2text(formShortcuts[input.id]);
+  });
 
-let os;
-browser.runtime.getPlatformInfo().then((info) => {
-  os = info.os;
+// clear shortcut when click
+u("#jump-to-result-keys").on("click", function (e: MouseEvent) {
+  const input = e.target as HTMLInputElement;
+  input.value = "";
 });
+u("#jump-to-result-keys").on("keydown", function (e: KeyboardEvent) {
+  if (e.key !== "Backspace" && e.key !== "Delete" && e.key !== "Tab") {
+    e.preventDefault();
+  }
+  if (isModifierOnly(e.key) || e.key.length !== 1) return;
 
-let formShortcuts = {};
-
-u("input").on("keydown", function (e: KeyboardEvent) {
   const input: HTMLInputElement = u(e.target).first();
 
-  if (!input.id) return;
+  if (input.value.length >= 10) {
+    console.log("too-long");
+    u("#jump-to-result-keys-inline-message").text(
+      browser.i18n.getMessage("shortcut-too-long", 10)
+    );
+    return;
+  }
 
-  formShortcuts[input.id] = {
-    ctrlKey: e.ctrlKey,
-    shiftKey: e.shiftKey,
-    altKey: e.altKey,
-    metaKey: e.metaKey,
-    key: e.key,
-  };
+  if (input.value.includes(e.key.toUpperCase())) {
+    u("#jump-to-result-keys-inline-message").text(
+      browser.i18n.getMessage("must-be-unique-list")
+    );
+    return;
+  }
 
-  e.preventDefault();
-  input.value = shortcut2Text(formShortcuts[input.id]);
+  u("#jump-to-result-keys-inline-message").text(
+    browser.i18n.getMessage("valid-shortcut")
+  );
+
+  input.value += e.key.toUpperCase();
+  formShortcuts[input.id] = input.value;
+});
+
+u(".reset").on("click", function (e) {
+  const input = u(e.target).siblings("input").first();
+  console.log(input);
+
+  const command = input.id;
+  const shortcut = defaultShortcuts[command];
+  input.value = shortcut2text(shortcut);
 });
 
 u("form").on("submit", () => {
-  // ! no error handling
-  browser.storage.local.set({
-    shortcuts: formShortcuts,
-  });
+  browser.storage.local
+    .set({
+      shortcuts: formShortcuts,
+    })
+    .then(
+      () => {
+        console.log("set: ", formShortcuts);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
 });
-
-function shortcut2Text(shortcut: Shortcut) {
-  const modifiers = [];
-  if (shortcut.ctrlKey) modifiers.push("Ctrl");
-  if (shortcut.shiftKey) modifiers.push("Shift");
-  if (shortcut.altKey) modifiers.push("Alt");
-  if (shortcut.metaKey) {
-    if (os === "mac") {
-      modifiers.push("⌘");
-    } else if (os === "win") {
-      modifiers.push("Win");
-    }
-  }
-
-  let key = shortcut.key;
-  if (["Control", "Shift", "Alt", "Meta"].includes(shortcut.key)) {
-    key = "";
-  } else if (key.length === 1) {
-    key = key.toUpperCase();
-  }
-
-  if (modifiers.length > 0) {
-    return modifiers.join("+") + (key === "" ? key : "+" + key);
-  } else {
-    return key;
-  }
-}
