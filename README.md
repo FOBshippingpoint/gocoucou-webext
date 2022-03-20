@@ -1,6 +1,8 @@
 # <sub><img src="./src/assets/icon-128.png" width=64px height=64px></sub> Goocoucou
 
-A web extension helps you navigate Google Search results using shortcuts.
+A web extension that helps you navigate Google Search results using shortcuts.
+
+[![Demo video on YouTube](https://img.youtube.com/vi/Xa_MYxBUB00/0.jpg)](https://youtu.be/Xa_MYxBUB00)
 
 ## Developing
 
