@@ -1,37 +1,198 @@
 {
-  "extensionName": {
-    "message": "Notify link clicks i18n",
-    "description": "Name of the extension."
-  },
-
-  "extensionDescription": {
-    "message": "Shows a notification when the user clicks on links.",
+  "extension_description": {
+    "message": "Helps you easily navigate Google search results.",
     "description": "Description of the extension."
   },
 
-  "hello": {
-    "message": "Click notification",
-    "description": "Title of the click notification."
+  "settings": {
+    "message": "Settings",
+    "description": "A link in popup page."
   },
 
-  "notificationContent": {
-    "message": "You clicked $URL$.",
-    "description": "Tells the user which link they clicked.",
+  "doc_title_settings": {
+    "message": "Goocoucou - Settings",
+    "description": "Title of the extension's options page."
+  },
+
+  "shortcuts": {
+    "message": "Shortcuts",
+    "description": "A tab button name in options page."
+  },
+
+  "other_settings": {
+    "message": "Other settings",
+    "description": "A tab button name in options page."
+  },
+
+  "style_of_selected": {
+    "message": "Style of selected search result",
+    "description": "The legend of form."
+  },
+
+  "style_preview": {
+    "message": "Style preview",
+    "description": "Text of selected search result style preview."
+  },
+
+  "left_line_style": {
+    "message": "Left line style",
+    "description": "Text of selected search result style."
+  },
+
+  "dotted_rect_style": {
+    "message": "Dotted rectangle style",
+    "description": "Text of selected search result style."
+  },
+
+  "char_to_display": {
+    "message": "Characters to display when the number of results is greater than $MAX_NUM$",
+    "description": "The legend of form.",
     "placeholders": {
-      "url": {
+      "MAX_NUM": {
         "content": "$1",
-        "example": "https://developer.mozilla.org"
+        "example": "10"
       }
     }
   },
 
-  "shortcut-upward": {
-    "message": "Move to previous result",
-    "description": "Move to previous result"
+  "odd": {
+    "message": "When number is odd",
+    "description": "The description of odd in other settings."
   },
 
-  "shortcut-downward": {
+  "even": {
+    "message": "When number is even",
+    "description": "The description of even in other settings."
+  },
+
+  "reset_all": {
+    "message": "Reset all settings to default, including shortcuts",
+    "description": "The description of reset all button in other settings."
+  },
+
+  "confirm_reset_all": {
+    "message": "Are you sure you want to reset all settings to default, including shortcuts?",
+    "description": "The message shown in the confirmation dialog."
+  },
+
+  "debug_checkbox": {
+    "message": "Enable debug mode",
+    "description": "The description of reset all button in other settings."
+  },
+
+  "how_to_use": {
+    "message": "How to use",
+    "description": "A tab button name in options page."
+  },
+
+  "how_to_use_content": {
+    "message": "Press shortcut keys to navigate through the result in the Google search page.",
+    "description": "The description of how to use."
+  },
+
+  "about": {
+    "message": "About",
+    "description": "A tab button name in options page."
+  },
+
+  "about_content": {
+    "message": "I like shortcuts, but Google Search doesn't have that, so I wrote my own.",
+    "description": "The description of about."
+  },
+
+  "upward": {
+    "message": "Move to previous result",
+    "description": "The shortcut description for options page."
+  },
+
+  "downward": {
     "message": "Move to next result",
-    "description": "Move to next result"
+    "description": "The shortcut description for options page."
+  },
+
+  "open_in_current_tab": {
+    "message": "Open selected result in current tab",
+    "description": "The shortcut description for options page."
+  },
+
+  "open_in_new_tab_but_stay_on_current": {
+    "message": "Open selected result in new tab",
+    "description": "The shortcut description for options page."
+  },
+
+  "open_in_new_tab_and_focus": {
+    "message": "Open selected result in new tab and focus",
+    "description": "The shortcut description for options page."
+  },
+
+  "switch_to_image": {
+    "message": "Switch to image search",
+    "description": "The shortcut description for options page."
+  },
+
+  "switch_to_news": {
+    "message": "Switch to news search",
+    "description": "The shortcut description for options page."
+  },
+
+  "switch_to_video": {
+    "message": "Switch to video search",
+    "description": "The shortcut description for options page."
+  },
+
+  "switch_to_books": {
+    "message": "Switch to books search",
+    "description": "The shortcut description for options page."
+  },
+
+  "jump_to_result_keys": {
+    "message": "Jump to result keys",
+    "description": "The shortcut description for options page."
+  },
+
+  "next_page": {
+    "message": "Go to next page",
+    "description": "The shortcut description for options page."
+  },
+
+  "previous_page": {
+    "message": "Go to previous page",
+    "description": "The shortcut description for options page."
+  },
+
+  "reset_button": {
+    "message": "Reset",
+    "description": "Reset current shortcut to default."
+  },
+
+  "save_button": {
+    "message": "Save",
+    "description": "Save settings."
+  },
+
+  "too_long": {
+    "message": "Must be less than or equal to $MAX_NUM$.",
+    "description": "Jump to result keys invalid info.",
+    "placeholders": {
+      "MAX_NUM": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+
+  "must_be_unique_list": {
+    "message": "Must be unique list.",
+    "description": "Jump to result keys invalid info."
+  },
+
+  "valid_shortcut": {
+    "message": "OK :)",
+    "description": "Jump to result keys valid info."
+  },
+
+  "error_while_saving": {
+    "message": "An error occurred while saving, check the console for more information.",
+    "description": "The alert message shown when error occurs while saving."
   }
 }

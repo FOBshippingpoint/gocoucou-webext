@@ -1,9 +1,17 @@
 {
   "manifest_version": 2,
-  "name": "goocoucou",
+  "name": "Goocoucou",
   "version": "1.0.0",
-  "description": "Google search result navigator",
+  "author": "FOBshippingpoint",
+  "description": "__MSG_extension_description__",
+  "homepage_url": "https://github.com/FOBshippingpoint/goocoucou-webext",
+  "icons": {
+    "16": "assets/icon-16.png",
+    "48": "assets/icon-48.png",
+    "128": "assets/icon-128.png"
+  },
   "browser_action": {
+    "default_icon": "assets/icon-48.png",
     "default_popup": "popup/index.html"
   },
   "options_ui": {
@@ -19,7 +27,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.google.com/*"
+        "*://www.google.com/*"
       ],
       "js": [
         "content-scripts/index.ts"
@@ -30,20 +38,6 @@
     }
   ],
   "default_locale": "en",
-  "commands": {
-    "toggle-feature": {
-      "suggested_key": {
-        "default": "Alt+Shift+U",
-        "linux": "Ctrl+Shift+U"
-      },
-      "description": "Send a 'toggle-feature' event to the extension"
-    },
-    "do-another-thing": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+Y"
-      }
-    }
-  },
   "permissions": [
     "tabs",
     "storage"

@@ -1,15 +1,11 @@
 import { Shortcut } from "../types";
 import browser from "webextension-polyfill";
+import { log } from "./log";
 
 let os: browser.Runtime.PlatformOs;
 browser.runtime.getPlatformInfo().then((info) => {
   os = info.os;
 });
-
-// const modifiers = ["ctrlKey", "shiftKey", "altKey", "metaKey"];
-// export function hasModifier(e: KeyboardEvent) {
-//   return modifiers.some((m) => e[m] === true);
-// }
 
 const modifierKeys = ["Control", "Shift", "Alt", "Meta"];
 export function isModifierOnly(key: string) {
@@ -28,7 +24,7 @@ export function keyboardEvent2shortcut(e: KeyboardEvent): Shortcut {
   return shortcut;
 }
 
-export function shortcut2text(shortcut: Shortcut) {
+export function shortcut2text(shortcut: Shortcut | string[]) {
   // jump to result keys only
   if (Array.isArray(shortcut)) {
     return shortcut.join("");
@@ -40,8 +36,10 @@ export function shortcut2text(shortcut: Shortcut) {
   if (shortcut.altKey) modifiers.push("Alt");
   if (shortcut.metaKey) {
     if (os === "mac") {
+      log("Mac OS detected, use ⌘");
       modifiers.push("⌘");
     } else if (os === "win") {
+      log("Windows detected, use Win");
       modifiers.push("Win");
     }
   }

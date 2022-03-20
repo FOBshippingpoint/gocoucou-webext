@@ -1,20 +1,25 @@
 import fs from "fs-extra";
 import type { Manifest } from "webextension-polyfill";
 import type PkgType from "../package.json";
-import { isDev, port, r } from "../scripts/utils";
+import { r } from "../scripts/utils";
 
-export async function getManifest() {
-  const pkg = (await fs.readJSON(r("package.json"))) as typeof PkgType;
+const pkg = fs.readJSONSync(r("package.json")) as typeof PkgType;
 
-  // update this file to update this manifest.json
-  // can also be conditional based on your need
-  const manifest: Manifest.WebExtensionManifest = {
+export async function getManifest(version = 2) {
+  const manifestV2: Manifest.WebExtensionManifest = {
     manifest_version: 2,
-    name: pkg.displayName || pkg.name,
+    name: "Goocoucou",
     version: pkg.version,
-    description: pkg.description,
+    author: "FOBshippingpoint",
+    description: "__MSG_extension_description__",
+    homepage_url: "https://github.com/FOBshippingpoint/goocoucou-webext",
+    icons: {
+      16: "assets/icon-16.png",
+      48: "assets/icon-48.png",
+      128: "assets/icon-128.png",
+    },
     browser_action: {
-      // default_icon: "./assets/icon-512.png",
+      default_icon: "assets/icon-48.png",
       default_popup: "popup/index.html",
     },
     options_ui: {
@@ -25,47 +30,59 @@ export async function getManifest() {
     background: {
       scripts: ["background/index.ts"],
     },
-    // // icons: {
-    //   16: "./assets/icon-512.png",
-    //   48: "./assets/icon-512.png",
-    //   128: "./assets/icon-512.png",
-    // },
     content_scripts: [
       {
-        matches: ["*://*.google.com/*"],
+        matches: ["*://www.google.com/*"],
         js: ["content-scripts/index.ts"],
         css: ["content-scripts/index.css"],
       },
     ],
-    // default_locale: "zh_TW",
     default_locale: "en",
-    commands: {
-      "toggle-feature": {
-        suggested_key: {
-          default: "Alt+Shift+U",
-          linux: "Ctrl+Shift+U",
-        },
-        description: "Send a 'toggle-feature' event to the extension",
-      },
-      "do-another-thing": {
-        suggested_key: {
-          default: "Ctrl+Shift+Y",
-        },
-      },
-    },
     permissions: ["tabs", "storage"],
   };
 
-  // if (isDev) {
-  //   // for content script, as browsers will cache them for each reload,
-  //   // we use a background script to always inject the latest version
-  //   // see src/background/contentScriptHMR.ts
-  //   delete manifest.content_scripts;
-  //   manifest.permissions?.push("webNavigation");
+  const manifestV3: Manifest.WebExtensionManifest = {
+    manifest_version: 3,
+    name: "Goocoucou",
+    version: pkg.version,
+    author: "FOBshippingpoint",
+    description: "__MSG_extension_description__",
+    homepage_url: "https://github.com/FOBshippingpoint/goocoucou-webext",
+    icons: {
+      16: "assets/icon-16.png",
+      48: "assets/icon-48.png",
+      128: "assets/icon-128.png",
+    },
+    action: {
+      default_icon: {
+        16: "assets/icon-16.png",
+        48: "assets/icon-48.png",
+        128: "assets/icon-128.png",
+      },
+      default_popup: "popup/index.html",
+    },
+    options_ui: {
+      page: "options/index.html",
+      open_in_tab: true,
+      chrome_style: false,
+    },
+    background: {
+      service_worker: "background/index.ts",
+    },
+    content_scripts: [
+      {
+        matches: ["*://www.google.com/*"],
+        js: ["content-scripts/index.ts"],
+        css: ["content-scripts/index.css"],
+      },
+    ],
+    default_locale: "en",
+    permissions: ["tabs", "storage"],
+  };
 
-  //   // this is required on dev for Vite script to load
-  //   manifest.content_security_policy = `script-src \'self\' http://localhost:${port}; object-src \'self\'`;
-  // }
-
-  return manifest;
+  if (version === 2) {
+    return manifestV2;
+  } else if (version === 3) {
+    return manifestV3;
+  }
 }

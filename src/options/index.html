@@ -1,4 +1,4 @@
-<html lang="zh-tw">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -6,51 +6,152 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
 		integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
-	<title>Document</title>
+	<link rel="stylesheet" href="./index.css">
+	<link rel="shortcut icon" type="image/png" href="../assets/icon-512.png" />
+	<title data-msg="doc_title_settings"></title>
 	<script type="module" src="index.ts"></script>
 </head>
 
-<style>
-	body {
-		margin: 30px 50px;
-	}
-</style>
-
 <body>
 	<main>
-		<form class="pure-form pure-form-aligned">
-			<fieldset>
-				<div class="pure-control-group">
-					<label for="upward" data-msg="shortcut-upward">Move to previous result</label>
-					<input type="text" id="upward" />
-					<button type="button" data-msg="reset-button" class="pure-button reset">reset</button>
-				</div>
-				<div class="pure-control-group">
-					<label for="downward" data-msg="shortcut-downward">Move to next result</label>
-					<input type="text" id="downward" />
-					<button type="button" data-msg="reset-button" class="pure-button reset">reset</button>
-				</div>
-				<div class="pure-control-group">
-					<label for="open-in-current-tab" data-msg="shortcut-open-in-current-tab">Open selected result in current
-						tab</label>
-					<input type="text" id="open-in-current-tab" />
-					<button type="button" data-msg="reset-button" class="pure-button reset">reset</button>
-				</div>
-				<div class="pure-control-group">
-					<label for="jump-to-result-keys" data-msg="shortcut-jump-to-result-keys">Jump to result keys</label>
-					<input type="text" id="jump-to-result-keys" />
-					<button type="button" data-msg="reset-button" class="pure-button reset">reset</button>
-					<span id="jump-to-result-keys-inline-message" class="pure-form-message-inline"></span>
-				</div>
-				<!-- <div class="pure-control-group">
-					<label for="activate" data-msg="activate-extension">Activate</label>
-					<input type="checkbox" id="activate" />
-				</div> -->
-				<div class="pure-controls">
-					<button type="submit" data-msg="save-button" class="pure-button pure-button-primary">Save</button>
-				</div>
-			</fieldset>
-		</form>
+		<div class="pure-button-group" role="tabs" id="tabs">
+			<button class="pure-button pure-button-active" data-msg="shortcuts"></button>
+			<button class="pure-button" data-msg="other_settings"></button>
+			<button class="pure-button" data-msg="how_to_use"></button>
+			<button class="pure-button" data-msg="about"></button>
+		</div>
+		<hr />
+		<div id="tab-contents">
+			<div id="tab-shortcuts">
+				<form class="pure-form pure-form-aligned">
+					<fieldset>
+						<div class="pure-control-group">
+							<label for="upward" data-msg="upward"></label>
+							<input type="text" id="upward" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+						</div>
+						<div class="pure-control-group">
+							<label for="downward" data-msg="downward"></label>
+							<input type="text" id="downward" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+						</div>
+						<div class="pure-control-group">
+							<label for="open_in_current_tab" data-msg="open_in_current_tab"></label>
+							<input type="text" id="open_in_current_tab" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+						</div>
+						<div class="pure-control-group">
+							<label for="open_in_new_tab_but_stay_on_current" data-msg="open_in_new_tab_but_stay_on_current"></label>
+							<input type="text" id="open_in_new_tab_but_stay_on_current" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+						</div>
+						<div class="pure-control-group">
+							<label for="open_in_new_tab_and_focus" data-msg="open_in_new_tab_and_focus"></label>
+							<input type="text" id="open_in_new_tab_and_focus" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+						</div>
+						<div class="pure-control-group">
+							<label for="switch_to_image" data-msg="switch_to_image"></label>
+							<input type="text" id="switch_to_image" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+						</div>
+						<div class="pure-control-group">
+							<label for="switch_to_news" data-msg="switch_to_news"></label>
+							<input type="text" id="switch_to_news" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+						</div>
+						<div class="pure-control-group">
+							<label for="switch_to_video" data-msg="switch_to_video"></label>
+							<input type="text" id="switch_to_video" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+						</div>
+						<div class="pure-control-group">
+							<label for="switch_to_books" data-msg="switch_to_books"></label>
+							<input type="text" id="switch_to_books" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+						</div>
+						<div class="pure-control-group">
+							<label for="next_page" data-msg="next_page"></label>
+							<input type="text" id="next_page" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+						</div>
+						<div class="pure-control-group">
+							<label for="previous_page" data-msg="previous_page"></label>
+							<input type="text" id="previous_page" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+						</div>
+						<div class="pure-control-group">
+							<label for="jump_to_result_keys" data-msg="jump_to_result_keys"></label>
+							<input type="text" id="jump_to_result_keys" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+							<span id="jump_to_result_keys_inline_message" class="pure-form-message-inline"></span>
+						</div>
+						<div class="pure-controls">
+							<button type="submit" data-msg="save_button" class="pure-button pure-button-primary"></button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+
+			<div id="tab-other_settings" class="hidden">
+				<form class="pure-form">
+					<legend data-msg="style_of_selected"></legend>
+					<label for="left_line_style" class="pure-radio">
+						<input type="radio" id="left_line_style" name="style_of_selected" value="left_line_style" />
+						<span data-msg="left_line_style"></span>
+					</label>
+					<div data-msg="style_preview" class="sokoban-wrap focus-left_line_style">
+					</div>
+					<div class="mt">
+						<label for="dotted_rect_style" class="pure-radio">
+							<input type="radio" id="dotted_rect_style" name="style_of_selected" value="dotted_rect_style" />
+							<span data-msg="dotted_rect_style"></span>
+						</label>
+						<div data-msg="style_preview" class="sokoban-wrap focus-dotted_rect_style">
+						</div>
+					</div>
+				</form>
+				<form id="char_to_display" class="pure-form pure-form-aligned mt">
+					<legend data-msg="char_to_display"></legend>
+					<fieldset>
+						<div class="pure-control-group">
+							<label for="odd" data-msg="odd"></label>
+							<input type="text" id="odd" maxlength="1" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+						</div>
+						<div class="pure-control-group">
+							<label for="even" data-msg="even"></label>
+							<input type="text" id="even" maxlength="1" />
+							<button type="button" data-msg="reset_button" class="pure-button reset"></button>
+						</div>
+					</fieldset>
+				</form>
+				<form class="pure-form pure-form-stacked">
+					<fieldset>
+						<button type="button" id="reset_all" data-msg="reset_all" class="button-error pure-button"></button>
+						<label for="debug_checkbox" class="pure-checkbox">
+							<input type="checkbox" id="debug_checkbox" />
+							<span data-msg="debug_checkbox" class="ml"></span>
+						</label>
+					</fieldset>
+				</form>
+			</div>
+
+			<div id="tab-how_to_use" class="hidden">
+				<p data-msg="how_to_use_content"></p>
+			</div>
+
+			<div id="tab-about" class="hidden">
+				<p data-msg="about_content"></p>
+				<ul>
+					<li><a href="https://github.com/FOBshippingpoint/goocoucou-webext">GitHub</a></li>
+					<li><a href="https://morikko.github.io/translate-web-extension/help">Translate</a></li>
+					<li><a href="https://www.youtube.com/channel/UC-UzF0F_qnMhwy9oB-DyWsg">YouTube</a></li>
+				</ul>
+				<p>Made with ❤️ & 科皓不要 by <a href="https://github.com/FOBshippingpoint">FOBshippingpoint</a></p>
+			</div>
+		</div>
+
 	</main>
 </body>
 

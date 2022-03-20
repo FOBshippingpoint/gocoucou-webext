@@ -1,5 +1,5 @@
 export const defaultShortcuts = {
-  "jump-to-result-keys": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+  jump_to_result_keys: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
   upward: {
     ctrlKey: false,
     shiftKey: false,
@@ -14,25 +14,67 @@ export const defaultShortcuts = {
     metaKey: false,
     key: "j",
   },
-  "open-in-current-tab": {
+  open_in_current_tab: {
     ctrlKey: false,
     shiftKey: false,
     altKey: false,
     metaKey: false,
     key: "Enter",
   },
-  "open-in-new-tab-but-stay-on-current": {
+  open_in_new_tab_but_stay_on_current: {
     ctrlKey: true,
     shiftKey: false,
     altKey: false,
     metaKey: false,
     key: "Enter",
   },
-  "open-in-new-tab-and-focus": {
+  open_in_new_tab_and_focus: {
     ctrlKey: true,
     shiftKey: true,
     altKey: false,
     metaKey: false,
     key: "Enter",
+  },
+  switch_to_image: {
+    ctrlKey: false,
+    shiftKey: true,
+    altKey: false,
+    metaKey: false,
+    key: "I",
+  },
+  switch_to_news: {
+    ctrlKey: false,
+    shiftKey: true,
+    altKey: false,
+    metaKey: false,
+    key: "N",
+  },
+  switch_to_video: {
+    ctrlKey: false,
+    shiftKey: true,
+    altKey: false,
+    metaKey: false,
+    key: "V",
+  },
+  switch_to_books: {
+    ctrlKey: false,
+    shiftKey: true,
+    altKey: false,
+    metaKey: false,
+    key: "B",
+  },
+  next_page: {
+    ctrlKey: false,
+    shiftKey: false,
+    altKey: false,
+    metaKey: false,
+    key: "l",
+  },
+  previous_page: {
+    ctrlKey: false,
+    shiftKey: false,
+    altKey: false,
+    metaKey: false,
+    key: "h",
   },
 };

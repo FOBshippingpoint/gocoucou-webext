@@ -4,8 +4,8 @@ import { r, log, isDev } from "./utils";
 import chokidar from "chokidar";
 import logSymbols from "log-symbols";
 
-export async function writeManifest() {
-  await fs.writeJSON(r("src/manifest.json"), await getManifest(), {
+export async function writeManifest(version: number) {
+  await fs.writeJSON(r("src/manifest.json"), await getManifest(version), {
     spaces: 2,
   });
   log.success(logSymbols.success, "write manifest");

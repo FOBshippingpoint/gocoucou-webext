@@ -1,5 +1,5 @@
 export default class Cursor {
-  #index = -1;
+  #index = 0;
   #maxLength: number;
 
   constructor(maxLength: number) {

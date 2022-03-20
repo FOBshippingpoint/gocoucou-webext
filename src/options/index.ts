@@ -1,104 +1,175 @@
 import browser from "webextension-polyfill";
 import u from "umbrellajs";
-import { defaultShortcuts } from "../settings/default-shortcuts";
+import { defaultSettings } from "../settings/default-settings";
 import {
   isModifierOnly,
   keyboardEvent2shortcut,
   shortcut2text,
 } from "../utils/shortcut-utils";
+import { Settings } from "../types/index";
+import { translate } from "../utils/translate";
+import { log } from "../utils/log";
+import { getSettings } from "../utils/settings";
 
-// translate
-u("[data-msg]").each(function (node) {
-  const key = u(node).data("msg");
-  const text = browser.i18n.getMessage(key);
-  u(node).text(text === "" ? key : text);
+translate();
+
+// tabs control
+u("#tabs button").on("click", function (e) {
+  u("#tabs button").removeClass("pure-button-active");
+  u(e.target).addClass("pure-button-active");
+
+  u("#tab-contents > div").addClass("hidden");
+  u("#tab-" + u(e.target).data("msg")).removeClass("hidden");
 });
 
-let formShortcuts = {};
+// init settings
+getSettings((settings) => {
+  u("#tab-shortcuts input").each(function (node) {
+    const command = u(node).attr("id");
+    const shortcut = settings.shortcuts[command];
+    u(node).attr("value", shortcut2text(shortcut));
+  });
+  let newShortcuts = settings.shortcuts;
+  shortcutsSettings(newShortcuts, settings);
+  otherSettings(settings);
+});
 
-// init shortcuts
-browser.storage.local.get({ shortcuts: defaultShortcuts }).then(
-  ({ shortcuts }) => {
-    console.log(shortcuts);
-    u("input").each(function (node) {
-      const command = u(node).attr("id");
-      const shortcut = shortcuts[command];
-      console.log("shortcut", command, shortcut);
-      u(node).attr("value", shortcut2text(shortcut));
+function shortcutsSettings(newShortcuts, settings) {
+  u("#tab-shortcuts input")
+    .not("#jump_to_result_keys")
+    .on("keydown", function (e: KeyboardEvent) {
+      if (e.key === "Tab") return;
+      e.preventDefault();
+      const input: HTMLInputElement = u(e.target).first();
+      newShortcuts[input.id] = keyboardEvent2shortcut(e);
+      input.value = shortcut2text(newShortcuts[input.id]);
     });
-    formShortcuts = shortcuts;
-  },
-  (err) => {
-    console.log(err);
-  }
-);
 
-u("input")
-  .not("#jump-to-result-keys")
-  .on("keydown", function (e: KeyboardEvent) {
-    if (e.key === "Tab") return;
-    e.preventDefault();
+  // clear shortcut when click
+  u("#jump_to_result_keys").on("click", function (e: MouseEvent) {
+    const input = e.target as HTMLInputElement;
+    input.value = "";
+  });
+  u("#jump_to_result_keys").on("keydown", function (e: KeyboardEvent) {
+    if (e.key !== "Backspace" && e.key !== "Delete" && e.key !== "Tab") {
+      e.preventDefault();
+    }
+    if (isModifierOnly(e.key) || e.key.length !== 1) return;
+
     const input: HTMLInputElement = u(e.target).first();
-    formShortcuts[input.id] = keyboardEvent2shortcut(e);
-    input.value = shortcut2text(formShortcuts[input.id]);
+
+    if (input.value.length >= 10) {
+      u("#jump_to_result_keys_inline_message").text(
+        browser.i18n.getMessage("shortcut_too_long", 10)
+      );
+      return;
+    }
+
+    if (input.value.includes(e.key.toUpperCase())) {
+      u("#jump_to_result_keys_inline_message").text(
+        browser.i18n.getMessage("must_be_unique_list")
+      );
+      return;
+    }
+
+    u("#jump_to_result_keys_inline_message").text(
+      browser.i18n.getMessage("valid_shortcut")
+    );
+
+    input.value += e.key.toUpperCase();
+    newShortcuts[input.id] = input.value;
   });
 
-// clear shortcut when click
-u("#jump-to-result-keys").on("click", function (e: MouseEvent) {
-  const input = e.target as HTMLInputElement;
-  input.value = "";
-});
-u("#jump-to-result-keys").on("keydown", function (e: KeyboardEvent) {
-  if (e.key !== "Backspace" && e.key !== "Delete" && e.key !== "Tab") {
-    e.preventDefault();
+  // reset shortcut
+  u("#tab-shortcuts .reset").on("click", function (e) {
+    const input = u(e.target).siblings("input").first();
+
+    const command = input.id;
+    const shortcut = defaultSettings.shortcuts[command];
+    input.value = shortcut2text(shortcut);
+  });
+
+  // save shortcuts
+  u("form").on("submit", () => {
+    browser.storage.local
+      .set({
+        settings: { ...settings, shortcuts: newShortcuts },
+      })
+      .then(() => log("new shortcuts set: ", newShortcuts), alertError);
+  });
+}
+
+function otherSettings(settings: Settings) {
+  const otherSettings = settings["other_settings"];
+  // init other settings
+  // init style of selected settings
+  u("#" + otherSettings["style_of_selected"]).attr("checked", true);
+
+  // style settings
+  u("[name=style_of_selected]").on("change", function (e) {
+    otherSettings["style_of_selected"] = e.target.value;
+    saveOtherSettings();
+  });
+
+  // init char to display
+  u("form#char_to_display input").each(function (node) {
+    node.value = otherSettings["char_to_display"][node.id];
+  });
+
+  u("form#char_to_display input").on("change", function (e) {
+    otherSettings["char_to_display"][e.target.id] = e.target.value;
+    saveOtherSettings();
+  });
+
+  // reset char to display
+  u("#tab-other-settings .reset").on("click", function (e) {
+    const input = u(e.target).siblings("input").first();
+
+    input.value =
+      defaultSettings["other_settings"]["char_to_display"][input.id];
+  });
+
+  // reset all settings
+  u("#tab-other-settings #reset_all").on("click", function (e) {
+    const result = confirm(browser.i18n.getMessage("confirm_reset_all"));
+    if (result) {
+      browser.storage.local.set({ settings: defaultSettings }).then(
+        () => {
+          log("reset all settings ok");
+        },
+        (err) => {
+          alert(err);
+        }
+      );
+    }
+  });
+
+  // debug mode
+  u("#debug_checkbox").on("change", function (e) {
+    otherSettings["debug_mode"] = e.target.checked;
+    saveOtherSettings();
+  });
+
+  function saveOtherSettings() {
+    browser.storage.local
+      .set({
+        settings: {
+          ...settings,
+          other_settings: otherSettings,
+        },
+      })
+      .then(
+        () => {
+          log("other settings saved: ", otherSettings);
+        },
+        (err) => {
+          alertError(err);
+        }
+      );
   }
-  if (isModifierOnly(e.key) || e.key.length !== 1) return;
+}
 
-  const input: HTMLInputElement = u(e.target).first();
-
-  if (input.value.length >= 10) {
-    console.log("too-long");
-    u("#jump-to-result-keys-inline-message").text(
-      browser.i18n.getMessage("shortcut-too-long", 10)
-    );
-    return;
-  }
-
-  if (input.value.includes(e.key.toUpperCase())) {
-    u("#jump-to-result-keys-inline-message").text(
-      browser.i18n.getMessage("must-be-unique-list")
-    );
-    return;
-  }
-
-  u("#jump-to-result-keys-inline-message").text(
-    browser.i18n.getMessage("valid-shortcut")
-  );
-
-  input.value += e.key.toUpperCase();
-  formShortcuts[input.id] = input.value;
-});
-
-u(".reset").on("click", function (e) {
-  const input = u(e.target).siblings("input").first();
-  console.log(input);
-
-  const command = input.id;
-  const shortcut = defaultShortcuts[command];
-  input.value = shortcut2text(shortcut);
-});
-
-u("form").on("submit", () => {
-  browser.storage.local
-    .set({
-      shortcuts: formShortcuts,
-    })
-    .then(
-      () => {
-        console.log("set: ", formShortcuts);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-});
+function alertError(err) {
+  alert(browser.i18n.getMessage("error_while_saving"));
+  console.log(err);
+}
