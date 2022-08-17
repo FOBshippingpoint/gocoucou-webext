@@ -25,7 +25,6 @@ export async function getManifest(version = 2) {
     options_ui: {
       page: "options/index.html",
       open_in_tab: true,
-      chrome_style: false,
     },
     background: {
       scripts: ["background/index.ts"],
@@ -34,7 +33,7 @@ export async function getManifest(version = 2) {
       {
         matches: ["*://www.google.com/*"],
         js: ["content-scripts/index.ts"],
-        css: ["content-scripts/index.css"],
+        css: ["assets/style.css"],
       },
     ],
     default_locale: "en",

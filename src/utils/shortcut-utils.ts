@@ -30,7 +30,7 @@ export function shortcut2text(shortcut: Shortcut | string[]) {
     return shortcut.join("");
   }
 
-  const modifiers = [];
+  const modifiers: String[] = [];
   if (shortcut.ctrlKey) modifiers.push("Ctrl");
   if (shortcut.shiftKey) modifiers.push("Shift");
   if (shortcut.altKey) modifiers.push("Alt");

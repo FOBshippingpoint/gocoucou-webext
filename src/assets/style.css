@@ -1,4 +1,13 @@
-.flag {
+@keyframes borderAnimation {
+  0% {
+    background-position: 0 0, -20px 0, 100% -20px, 0 100%;
+  }
+  to {
+    background-position: 0-20px, 0 0, 100%0, -20px 100%;
+  }
+}
+.flag,
+.flag-dark {
   position: absolute;
   left: -35px;
   color: #5f6368;
@@ -7,69 +16,57 @@
   padding: 0 5px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
-
 .flag-dark {
-  position: absolute;
-  left: -35px;
   color: #bdc1c6;
   background-color: #303134;
-  border-radius: 3px;
-  padding: 0 5px;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
-
 .sokoban-wrap {
   padding: 10px;
 }
-
-.focus-left_line_style {
-  border-left: 4px solid #1a73e8;
-}
-
+.focus-left_line_style,
 .focus-left_line_style-dark {
   border-left: 4px solid #1a73e8;
 }
-
-.focus-dotted_rect_style {
+.focus-dotted_rect_style,
+.focus-dotted_rect_style-dark {
   background-image: repeating-linear-gradient(
       0deg,
-      #333333,
-      #333333 10px,
+      #333,
+      #333 10px,
       transparent 10px,
       transparent 20px,
-      #333333 20px
+      #333 20px
     ),
     repeating-linear-gradient(
       90deg,
-      #333333,
-      #333333 10px,
+      #333,
+      #333 10px,
       transparent 10px,
       transparent 20px,
-      #333333 20px
+      #333 20px
     ),
     repeating-linear-gradient(
       180deg,
-      #333333,
-      #333333 10px,
+      #333,
+      #333 10px,
       transparent 10px,
       transparent 20px,
-      #333333 20px
+      #333 20px
     ),
     repeating-linear-gradient(
       270deg,
-      #333333,
-      #333333 10px,
+      #333,
+      #333 10px,
       transparent 10px,
       transparent 20px,
-      #333333 20px
+      #333 20px
     );
   background-size: 3px calc(100% + 20px), calc(100% + 20px) 3px,
     3px calc(100% + 20px), calc(100% + 20px) 3px;
-  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-position: 0 0, 0 0, 100%0, 0 100%;
   background-repeat: no-repeat;
   animation: borderAnimation 1s infinite linear;
 }
-
 .focus-dotted_rect_style-dark {
   background-image: repeating-linear-gradient(
       0deg,
@@ -103,18 +100,4 @@
       transparent 20px,
       #e8eaed 20px
     );
-  background-size: 3px calc(100% + 20px), calc(100% + 20px) 3px,
-    3px calc(100% + 20px), calc(100% + 20px) 3px;
-  background-position: 0 0, 0 0, 100% 0, 0 100%;
-  background-repeat: no-repeat;
-  animation: borderAnimation 1s infinite linear;
-}
-
-@keyframes borderAnimation {
-  from {
-    background-position: 0 0, -20px 0, 100% -20px, 0 100%;
-  }
-  to {
-    background-position: 0 -20px, 0 0, 100% 0, -20px 100%;
-  }
 }
