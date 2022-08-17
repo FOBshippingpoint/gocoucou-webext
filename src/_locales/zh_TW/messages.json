@@ -28,7 +28,7 @@
     "description": "Text of selected search result style preview."
   },
   "left_line_style": {
-    "message": "左邊一條線",
+    "message": "SearXNG風格",
     "description": "Text of selected search result style."
   },
   "dotted_rect_style": {
@@ -101,32 +101,16 @@
     "message": "在其他分頁開啟並切換",
     "description": "The shortcut description for options page."
   },
-  "switch_to_image": {
-    "message": "轉為圖片搜尋",
-    "description": "The shortcut description for options page."
-  },
-  "switch_to_news": {
-    "message": "轉為新聞搜尋",
-    "description": "The shortcut description for options page."
-  },
-  "switch_to_video": {
-    "message": "轉為影片搜尋",
-    "description": "The shortcut description for options page."
-  },
-  "switch_to_books": {
-    "message": "轉為書籍搜尋",
-    "description": "The shortcut description for options page."
-  },
   "jump_to_result_keys": {
     "message": "跳到搜尋結果",
     "description": "The shortcut description for options page."
   },
   "next_page": {
-    "message": "換到搜尋結果下一頁",
+    "message": "換到下一頁搜尋結果",
     "description": "The shortcut description for options page."
   },
   "previous_page": {
-    "message": "換到搜尋結果上一頁",
+    "message": "換到上一頁搜尋結果",
     "description": "The shortcut description for options page."
   },
   "reset_button": {

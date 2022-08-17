@@ -125,26 +125,6 @@
     "description": "The shortcut description for options page."
   },
 
-  "switch_to_image": {
-    "message": "Switch to image search",
-    "description": "The shortcut description for options page."
-  },
-
-  "switch_to_news": {
-    "message": "Switch to news search",
-    "description": "The shortcut description for options page."
-  },
-
-  "switch_to_video": {
-    "message": "Switch to video search",
-    "description": "The shortcut description for options page."
-  },
-
-  "switch_to_books": {
-    "message": "Switch to books search",
-    "description": "The shortcut description for options page."
-  },
-
   "jump_to_result_keys": {
     "message": "Jump to result keys",
     "description": "The shortcut description for options page."

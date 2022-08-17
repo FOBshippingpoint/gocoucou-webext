@@ -45,25 +45,6 @@ function main(settings: Settings) {
   // mark first result
   mark();
 
-  const searchTypeLinks = {};
-  u(".hdtb-mitem a").each(function (node, i) {
-    const href = u(node).attr("href");
-    switch (i) {
-      case 0:
-        searchTypeLinks["image"] = href;
-        break;
-      case 1:
-        searchTypeLinks["news"] = href;
-        break;
-      case 2:
-        searchTypeLinks["video"] = href;
-        break;
-      case 3:
-        searchTypeLinks["books"] = href;
-        break;
-    }
-  });
-
   const pageLinks = {
     next: u("#pnnext").attr("href"),
     prev: u("#pnprev").attr("href"),
@@ -107,18 +88,6 @@ function main(settings: Settings) {
           url: sokobans[cursor.index].href,
           active: true, // focus new tab
         });
-        break;
-      case "switch_to_image":
-        window.location.assign(searchTypeLinks["image"]);
-        break;
-      case "switch_to_news":
-        window.location.assign(searchTypeLinks["news"]);
-        break;
-      case "switch_to_video":
-        window.location.assign(searchTypeLinks["video"]);
-        break;
-      case "switch_to_books":
-        window.location.assign(searchTypeLinks["books"]);
         break;
       case "next_page":
         if (pageLinks.next) {
