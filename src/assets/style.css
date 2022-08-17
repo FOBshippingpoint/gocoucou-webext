@@ -10,17 +10,21 @@
 .flag-dark {
   position: absolute;
   left: -35px;
-  color: #5f6368;
+  color: #202124;
   background-color: #f1f3f4;
   border-radius: 3px;
   padding: 0 5px;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  font-size: 16px;
+  min-width: 15px;
+  text-align: center;
+  vertical-align: middle;
 }
 .flag-dark {
   color: #bdc1c6;
   background-color: #303134;
 }
 .sokoban-wrap {
+  position: relative;
   padding: 10px;
 }
 .focus-left_line_style,
@@ -103,4 +107,56 @@
       transparent 20px,
       #e8eaed 20px
     );
+}
+
+.focus-rgb_style {
+  background-color: #f8f9fa;
+}
+.focus-rgb_style-dark {
+  background-color: #303134;
+}
+
+.focus-rgb_style-dark:before,
+.focus-rgb_style-dark:after,
+.focus-rgb_style:before,
+.focus-rgb_style:after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(
+    45deg,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #ff0000,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #ff0000
+  );
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.focus-rgb_style:after,
+.focus-rgb_style-dark:after {
+  filter: blur(10px);
 }

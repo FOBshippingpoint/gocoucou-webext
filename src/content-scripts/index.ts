@@ -18,30 +18,26 @@ function main(settings: Settings) {
   const sokobans: Sokoban[] = [];
   const { shortcuts } = settings;
 
-  // the old way: search for sokoban
-  // u("div[data_sokoban_container]")
-
-  // the new way: search for "http"'s "h"
-  u("cite")
-    .filter(function (node) {
-      return u(node).text().search("h") !== -1;
-    })
-    .closest("[data-hveid][data-ved]")
-    .each(function (node, i) {
-      let key = shortcuts["jump_to_result_keys"][i];
-      // if result is greater than keys, use two symbols to represent it
-      if (!key) {
-        key =
-          i % 2 === 0
-            ? settings["other_settings"]["char_to_display"]["even"]
-            : settings["other_settings"]["char_to_display"]["odd"];
-      }
-      u(node).before(
-        `<div class="${darkmode ? "flag-dark" : "flag"}">${key}</div>`
-      );
-      const wrapper = u(node).wrap("<div class='sokoban-wrap'>").first();
-      sokobans.push({ el: wrapper, href: u(node).find("a").attr("href") });
+  u(
+    "div[data-sokoban-container], div.V3FYCF, div.WC0BKe, div.PhiYYd.RdksUd.QBl4oe"
+  ).each(function (node, i) {
+    let key = shortcuts["jump_to_result_keys"][i];
+    // if result is greater than keys, use two symbols to represent it
+    if (!key) {
+      key =
+        i % 2 === 0
+          ? settings["other_settings"]["char_to_display"]["even"]
+          : settings["other_settings"]["char_to_display"]["odd"];
+    }
+    const wrapper = u(node).wrap("<div class='sokoban-wrap'>");
+    wrapper.prepend(
+      `<div class="${darkmode ? "flag-dark" : "flag"}">${key}</div>`
+    );
+    sokobans.push({
+      el: wrapper.first(),
+      href: u(node).find("a").attr("href"),
     });
+  });
 
   const cursor = new Cursor(sokobans.length);
   // mark first result
