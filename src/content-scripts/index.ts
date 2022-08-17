@@ -19,7 +19,16 @@ if (u(".sokoban-wrap").length === 0) {
 function main(settings: Settings) {
   const sokobans: Sokoban[] = [];
   const { shortcuts } = settings;
+  const focusClassName =
+    "focus-" +
+    settings["other_settings"]["sokoban_style"] +
+    (darkmode ? "-dark" : "");
+  const pageLinks = {
+    next: u("#pnnext").attr("href"),
+    prev: u("#pnprev").attr("href"),
+  };
 
+  // finding sokobans
   u(
     "div[data-sokoban-container], div.V3FYCF, div.WC0BKe, div.PhiYYd.RdksUd.QBl4oe"
   ).each(function (node, i) {
@@ -43,39 +52,37 @@ function main(settings: Settings) {
 
   const cursor = new Cursor(sokobans.length);
   // mark first result
-  mark();
-
-  const pageLinks = {
-    next: u("#pnnext").attr("href"),
-    prev: u("#pnprev").attr("href"),
-  };
+  markFocused(0);
 
   document.addEventListener("keydown", (e) => {
     // prevent trigger shortcut when typing
     if (u(e.target).is("input")) return;
 
-    const mapped = commandMapping(e);
-    switch (mapped) {
+    const command = commandMapping(e);
+    const oldIdx = cursor.index;
+    switch (command) {
       case "upward":
         cursor.upward();
         scroll();
-        mark();
+        markFocused(oldIdx);
         break;
       case "downward":
         cursor.downward();
         scroll();
-        mark();
+        markFocused(oldIdx);
         break;
       case "jump_to_result_keys":
         const key = keyboardEvent2text(e);
         cursor.jumpTo(shortcuts.jump_to_result_keys.indexOf(key));
         scroll();
-        mark();
+        markFocused(oldIdx);
         break;
       case "open_in_current_tab":
         window.location.replace(sokobans[cursor.index].href);
         return;
       case "open_in_new_tab_but_stay_on_current":
+        // browser.tabs API cannot access in content script.
+        // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts#webextension_apis
         browser.runtime.sendMessage({
           command: "open_in_new_tab",
           url: sokobans[cursor.index].href,
@@ -108,19 +115,10 @@ function main(settings: Settings) {
     sokoban.el.scrollIntoView({ block: "center" });
   }
 
-  function mark() {
-    let className = "focus-" + settings["other_settings"]["sokoban_style"];
-    if (darkmode) {
-      className += "-dark";
-    }
-    log("switch dark mode class name: ", className);
-    sokobans.forEach((s, i) => {
-      if (i === cursor.index) {
-        u(s.el).addClass(className);
-      } else {
-        u(s.el).removeClass(className);
-      }
-    });
+  // mark sokoban at cursor position, and remove previous one
+  function markFocused(toRemoveIdx: number) {
+    u(sokobans[toRemoveIdx].el).removeClass(focusClassName);
+    u(sokobans[cursor.index].el).addClass(focusClassName);
   }
 
   function commandMapping(e: KeyboardEvent): string | undefined {
