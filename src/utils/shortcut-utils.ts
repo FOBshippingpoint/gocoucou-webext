@@ -7,7 +7,7 @@ browser.runtime.getPlatformInfo().then((info) => {
   os = info.os;
 });
 
-const modifierKeys = ["Control", "Shift", "Alt", "Meta"];
+const modifierKeys = "Control Shift Alt Meta";
 export function isModifierOnly(key: string) {
   return modifierKeys.includes(key);
 }
