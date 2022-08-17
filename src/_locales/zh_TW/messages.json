@@ -19,7 +19,7 @@
     "message": "其他設定",
     "description": "A tab button name in options page."
   },
-  "style_of_selected": {
+  "sokoban_style": {
     "message": "焦點樣式",
     "description": "The legend of form."
   },

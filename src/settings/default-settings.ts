@@ -2,7 +2,7 @@ import { Settings } from "../types";
 
 export const defaultSettings: Settings = {
   other_settings: {
-    style_of_selected: "left_line_style",
+    sokoban_style: "left_line_style",
     char_to_display: {
       odd: "科",
       even: "皓",

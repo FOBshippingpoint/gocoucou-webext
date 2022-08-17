@@ -98,11 +98,11 @@ function otherSettings(settings: Settings) {
   const otherSettings = settings["other_settings"];
   // init other settings
   // init style of selected settings
-  u("#" + otherSettings["style_of_selected"]).attr("checked", true);
+  u("#" + otherSettings["sokoban_style"]).attr("checked", true);
 
   // style settings
-  u("[name=style_of_selected]").on("change", function (e) {
-    otherSettings["style_of_selected"] = e.target.value;
+  u("[name=sokoban_style]").on("change", function (e) {
+    otherSettings["sokoban_style"] = e.target.value;
     saveOtherSettings();
   });
 

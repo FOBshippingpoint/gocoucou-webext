@@ -24,7 +24,7 @@
     "description": "A tab button name in options page."
   },
 
-  "style_of_selected": {
+  "sokoban_style": {
     "message": "Style of selected search result",
     "description": "The legend of form."
   },

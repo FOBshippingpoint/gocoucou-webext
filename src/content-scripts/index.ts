@@ -142,7 +142,7 @@ function main(settings: Settings) {
   }
 
   function mark() {
-    let className = "focus-" + settings["other_settings"]["style_of_selected"];
+    let className = "focus-" + settings["other_settings"]["sokoban_style"];
     if (darkmode) {
       className += "-dark";
     }
