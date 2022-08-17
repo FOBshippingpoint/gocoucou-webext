@@ -15,11 +15,10 @@ export async function getManifest(version = 2) {
     homepage_url: "https://github.com/FOBshippingpoint/goocoucou-webext",
     icons: {
       16: "assets/icon-16.png",
-      48: "assets/icon-48.png",
-      128: "assets/icon-128.png",
+      64: "assets/icon-64.png",
     },
     browser_action: {
-      default_icon: "assets/icon-48.png",
+      default_icon: "assets/icon-16.png",
       default_popup: "popup/index.html",
     },
     options_ui: {
