@@ -6,7 +6,7 @@ export default class Cursor {
     this.#maxLength = maxLength;
   }
 
-  next() {
+  downward() {
     if (this.#index < this.#maxLength - 1) {
       this.#index++;
     } else {
@@ -16,7 +16,7 @@ export default class Cursor {
     return this.#index;
   }
 
-  prev() {
+  upward() {
     if (this.#index > 0) {
       this.#index--;
     } else {

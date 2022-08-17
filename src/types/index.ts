@@ -1,11 +1,3 @@
-export type Shortcut = {
-  ctrlKey: boolean;
-  shiftKey: boolean;
-  altKey: boolean;
-  metaKey: boolean;
-  key: string;
-};
-
 export type Sokoban = {
   el: HTMLElement;
   href: string;
@@ -13,8 +5,7 @@ export type Sokoban = {
 
 export interface Settings {
   shortcuts: {
-    [command: string]: Shortcut | string[];
-    jump_to_result_keys: string[];
+    [command: string]: string;
   };
   other_settings: {
     style_of_selected: "left_line_style" | "dotted_rect_style";

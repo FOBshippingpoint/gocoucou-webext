@@ -1,11 +1,7 @@
 import browser from "webextension-polyfill";
 import u from "umbrellajs";
 import { defaultSettings } from "../settings/default-settings";
-import {
-  isModifierOnly,
-  keyboardEvent2shortcut,
-  shortcut2text,
-} from "../utils/shortcut-utils";
+import { isModifierOnly, keyboardEvent2text } from "../utils/shortcut-utils";
 import { Settings } from "../types/index";
 import { translate } from "../utils/translate";
 import { log } from "../utils/log";
@@ -26,8 +22,7 @@ u("#tabs button").on("click", function (e) {
 getSettings((settings) => {
   u("#tab-shortcuts input").each(function (node) {
     const command = u(node).attr("id");
-    const shortcut = settings.shortcuts[command];
-    u(node).attr("value", shortcut2text(shortcut));
+    u(node).attr("value", settings.shortcuts[command]);
   });
   let newShortcuts = settings.shortcuts;
   shortcutsSettings(newShortcuts, settings);
@@ -41,8 +36,8 @@ function shortcutsSettings(newShortcuts, settings) {
       if (e.key === "Tab") return;
       e.preventDefault();
       const input: HTMLInputElement = u(e.target).first();
-      newShortcuts[input.id] = keyboardEvent2shortcut(e);
-      input.value = shortcut2text(newShortcuts[input.id]);
+      newShortcuts[input.id] = keyboardEvent2text(e);
+      input.value = newShortcuts[input.id];
     });
 
   // clear shortcut when click
@@ -54,6 +49,7 @@ function shortcutsSettings(newShortcuts, settings) {
     if (e.key !== "Backspace" && e.key !== "Delete" && e.key !== "Tab") {
       e.preventDefault();
     }
+
     if (isModifierOnly(e.key) || e.key.length !== 1) return;
 
     const input: HTMLInputElement = u(e.target).first();
@@ -85,8 +81,7 @@ function shortcutsSettings(newShortcuts, settings) {
     const input = u(e.target).siblings("input").first();
 
     const command = input.id;
-    const shortcut = defaultSettings.shortcuts[command];
-    input.value = shortcut2text(shortcut);
+    input.value = defaultSettings.shortcuts[command];
   });
 
   // save shortcuts

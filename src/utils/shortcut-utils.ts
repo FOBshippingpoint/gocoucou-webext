@@ -1,51 +1,21 @@
-import { Shortcut } from "../types";
-import browser from "webextension-polyfill";
-import { log } from "./log";
-
-let os: browser.Runtime.PlatformOs;
-browser.runtime.getPlatformInfo().then((info) => {
-  os = info.os;
-});
-
-const modifierKeys = "Control Shift Alt Meta";
+const modifierKeys = "Control Shift Alt";
 export function isModifierOnly(key: string) {
-  return modifierKeys.includes(key);
+  return key.length > 1 && modifierKeys.includes(key);
 }
 
-export function keyboardEvent2shortcut(e: KeyboardEvent): Shortcut {
-  let shortcut = {
-    ctrlKey: e.ctrlKey,
-    shiftKey: e.shiftKey,
-    altKey: e.altKey,
-    metaKey: e.metaKey,
-    key: e.key,
-  };
-
-  return shortcut;
-}
-
-export function shortcut2text(shortcut: Shortcut | string[]) {
+export function keyboardEvent2text(keyboardEvent: KeyboardEvent) {
   // jump to result keys only
-  if (Array.isArray(shortcut)) {
-    return shortcut.join("");
+  if (Array.isArray(keyboardEvent)) {
+    return keyboardEvent.join("");
   }
 
   const modifiers: String[] = [];
-  if (shortcut.ctrlKey) modifiers.push("Ctrl");
-  if (shortcut.shiftKey) modifiers.push("Shift");
-  if (shortcut.altKey) modifiers.push("Alt");
-  if (shortcut.metaKey) {
-    if (os === "mac") {
-      log("Mac OS detected, use ⌘");
-      modifiers.push("⌘");
-    } else if (os === "win") {
-      log("Windows detected, use Win");
-      modifiers.push("Win");
-    }
-  }
+  if (keyboardEvent.ctrlKey) modifiers.push("Ctrl");
+  if (keyboardEvent.shiftKey) modifiers.push("Shift");
+  if (keyboardEvent.altKey) modifiers.push("Alt");
 
-  let key = shortcut.key;
-  if (isModifierOnly(shortcut.key)) {
+  let key = keyboardEvent.key;
+  if (isModifierOnly(key)) {
     key = "";
   } else if (key === " ") {
     key = "Space";
@@ -54,7 +24,7 @@ export function shortcut2text(shortcut: Shortcut | string[]) {
   }
 
   if (modifiers.length > 0) {
-    return modifiers.join("+") + (key === "" ? key : "+" + key);
+    return modifiers.join(" + ") + (key === "" ? key : " + " + key);
   } else {
     return key;
   }

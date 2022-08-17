@@ -4,6 +4,7 @@ import browser from "webextension-polyfill";
 import { Sokoban, Settings } from "../types/index";
 import { getSettings } from "../utils/settings";
 import { log } from "../utils/log";
+import { keyboardEvent2text } from "../utils/shortcut-utils";
 
 // determine if the current page is dark mode using logo img src
 let darkmode = true;
@@ -14,7 +15,6 @@ if (u("#logo img").attr("src").search("light") === -1) {
 getSettings(main);
 
 function main(settings: Settings) {
-  const debug = settings["other_settings"]["debug_mode"];
   const sokobans: Sokoban[] = [];
   const { shortcuts } = settings;
 
@@ -71,42 +71,25 @@ function main(settings: Settings) {
     prev: u("#pnprev").attr("href"),
   };
 
-  if (debug) {
-    // log key at the end of the page
-    u("body").after("<div id='log'></div>");
-    document.addEventListener("keydown", logKey);
-    const logEl = document.getElementById("log");
-    function logKey(e) {
-      logEl.textContent += ` ${e.key}`;
-    }
-  }
-
-  const modifierKeys = ["ctrlKey", "shiftKey", "altKey", "metaKey"];
-
   document.addEventListener("keydown", (e) => {
     // prevent trigger shortcut when typing
     if (u(e.target).is("input")) return;
 
-    // jump to the target sokoban
-    if (modifierKeys.every((v) => e[v] === false)) {
-      const index = shortcuts["jump_to_result_keys"].indexOf(e.key);
-      if (index !== -1) {
-        cursor.jumpTo(index);
-        scroll();
-        mark();
-        return;
-      }
-    }
-
-    const command = shortcutMapping(e);
-    switch (command) {
+    const mapped = commandMapping(e);
+    switch (mapped) {
       case "upward":
-        cursor.prev();
+        cursor.upward();
         scroll();
         mark();
         break;
       case "downward":
-        cursor.next();
+        cursor.downward();
+        scroll();
+        mark();
+        break;
+      case "jump_to_result_keys":
+        const key = keyboardEvent2text(e);
+        cursor.jumpTo(shortcuts.jump_to_result_keys.indexOf(key));
         scroll();
         mark();
         break;
@@ -149,8 +132,6 @@ function main(settings: Settings) {
           window.location.assign(pageLinks.prev);
         }
         break;
-      default:
-        break;
     }
   });
 
@@ -175,23 +156,13 @@ function main(settings: Settings) {
     });
   }
 
-  function shortcutMapping(e: KeyboardEvent) {
-    if (debug) {
-      ["ctrlKey", "shiftKey", "altKey", "metaKey", "key"].forEach((key) => {
-        log(key, ":", e[key]);
-      });
+  function commandMapping(e: KeyboardEvent): string | undefined {
+    const shortcut = keyboardEvent2text(e);
+    log("keyboard event key: ", e.key, ", shortcut: ", shortcut);
+    if (shortcuts.jump_to_result_keys.includes(shortcut)) {
+      return "jump_to_result_keys";
     }
 
-    let command: string;
-    for (const prop in shortcuts) {
-      const shortcut = shortcuts[prop];
-      if (Object.keys(shortcut).every((key) => shortcut[key] === e[key])) {
-        command = prop;
-        break;
-      }
-    }
-
-    log("command: ", command);
-    return command;
+    return Object.keys(shortcuts).find((key) => shortcuts[key] === shortcut);
   }
 }
