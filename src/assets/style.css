@@ -25,7 +25,10 @@
 }
 .focus-left_line_style,
 .focus-left_line_style-dark {
-  border-left: 4px solid #1a73e8;
+  border-left: 3px solid #1a73e8;
+  background-color: #f8f9fa;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .focus-dotted_rect_style,
 .focus-dotted_rect_style-dark {
