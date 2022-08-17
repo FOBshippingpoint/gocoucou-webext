@@ -12,7 +12,9 @@ if (u("#logo img").attr("src").search("light") === -1) {
   darkmode = false;
 }
 
-getSettings(main);
+if (u(".sokoban-wrap").length === 0) {
+  getSettings(main);
+}
 
 function main(settings: Settings) {
   const sokobans: Sokoban[] = [];
@@ -90,7 +92,7 @@ function main(settings: Settings) {
         mark();
         break;
       case "open_in_current_tab":
-        window.location.assign(sokobans[cursor.index].href);
+        window.location.replace(sokobans[cursor.index].href);
         return;
       case "open_in_new_tab_but_stay_on_current":
         browser.runtime.sendMessage({
