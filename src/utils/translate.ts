@@ -6,7 +6,7 @@ export function translate () {
   u('[data-msg]').each(function (node) {
     const key = u(node).data('msg')
     let text = ''
-    if (key === 'char-to-display' || key === 'too_long') {
+    if (key === 'char_to_display' || key === 'too_long') {
       text = browser.i18n.getMessage(key, 10)
     } else {
       text = browser.i18n.getMessage(key)

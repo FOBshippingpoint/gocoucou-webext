@@ -56,7 +56,7 @@ function shortcutsSettings (newShortcuts, settings) {
 
     if (input.value.length >= 10) {
       u('#jump_to_result_keys_inline_message').text(
-        browser.i18n.getMessage('shortcut_too_long', 10)
+        browser.i18n.getMessage('too_long', 10)
       )
       return
     }

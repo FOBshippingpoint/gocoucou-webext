@@ -44,6 +44,11 @@
     "description": "Text of selected search result style."
   },
 
+  "rgb_style": {
+    "message": "RGB Gaming",
+    "description": "Text of selected search result style."
+  },
+
   "char_to_display": {
     "message": "Characters to display when the number of results is greater than $MAX_NUM$",
     "description": "The legend of form.",

@@ -35,6 +35,10 @@
     "message": "虛線",
     "description": "Text of selected search result style."
   },
+  "rgb_style": {
+    "message": "RGB電競風",
+    "description": "Text of selected search result style."
+  },
   "char_to_display": {
     "message": "搜尋結果數量超過$MAX_NUM$時顯示的字",
     "description": "The legend of form.",
