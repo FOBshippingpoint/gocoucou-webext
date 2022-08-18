@@ -1,4 +1,4 @@
-import browser from "webextension-polyfill";
+import { browser } from "../utils/browser";
 import { defaultSettings } from "../settings/default-settings";
 import { Settings } from "../types/index";
 

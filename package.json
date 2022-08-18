@@ -7,6 +7,7 @@
     "dev": "npm-run-all preprocess start",
     "start": "parcel src/manifest.json --host localhost --target webext-dev --config @parcel/config-webextension",
     "build": "parcel build src/manifest.json --target webext-prod --config @parcel/config-webextension",
+    "build:analyze": "parcel build src/manifest.json --target webext-prod --config @parcel/config-webextension --reporter @parcel/reporter-bundle-analyzer",
     "start:firefox": "web-ext run --source-dir ./dist  --target=firefox-desktop",
     "start:chromium": "web-ext run --source-dir ./dist --target=chromium",
     "lint": "web-ext lint --source-dir dist",
@@ -17,6 +18,7 @@
   "devDependencies": {
     "@parcel/config-webextension": "^2.3.2",
     "@parcel/core": "^2.3.2",
+    "@parcel/reporter-bundle-analyzer": "^2.7.0",
     "@types/fs-extra": "^9.0.13",
     "@types/webextension-polyfill": "^0.8.2",
     "chalk": "^5.0.1",
@@ -28,8 +30,7 @@
     "log-symbols": "^5.1.0",
     "npm-run-all": "^4.1.5",
     "parcel": "^2.3.2",
-    "web-ext": "^6.7.0",
-    "webextension-polyfill": "^0.8.0"
+    "web-ext": "^6.7.0"
   },
   "targets": {
     "webext-dev": {
@@ -38,7 +39,9 @@
         "inlineSources": true
       }
     },
-    "webext-prod": {}
+    "webext-prod": {
+      "sourceMap": false
+    }
   },
   "dependencies": {
     "@parcel/compressor-gzip": "^2.7.0",

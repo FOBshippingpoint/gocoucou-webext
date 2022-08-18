@@ -1,6 +1,5 @@
 import u from "umbrellajs";
 import Cursor from "./Cursor";
-// import browser from "webextension-polyfill";
 import { Sokoban, Settings } from "../types/index";
 import { getSettings } from "../utils/settings";
 import { log } from "../utils/log";

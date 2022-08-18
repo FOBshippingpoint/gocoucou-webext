@@ -4,6 +4,7 @@ specifiers:
   '@parcel/compressor-gzip': ^2.7.0
   '@parcel/config-webextension': ^2.3.2
   '@parcel/core': ^2.3.2
+  '@parcel/reporter-bundle-analyzer': ^2.7.0
   '@types/chrome': ^0.0.193
   '@types/firefox': ^0.0.31
   '@types/fs-extra': ^9.0.13
@@ -19,7 +20,6 @@ specifiers:
   parcel: ^2.3.2
   umbrellajs: ^3.3.1
   web-ext: ^6.7.0
-  webextension-polyfill: ^0.8.0
 
 dependencies:
   '@parcel/compressor-gzip': 2.7.0_@parcel+core@2.7.0
@@ -30,6 +30,7 @@ dependencies:
 devDependencies:
   '@parcel/config-webextension': 2.7.0_@parcel+core@2.7.0
   '@parcel/core': 2.7.0
+  '@parcel/reporter-bundle-analyzer': 2.7.0_@parcel+core@2.7.0
   '@types/fs-extra': 9.0.13
   '@types/webextension-polyfill': 0.8.3
   chalk: 5.0.1
@@ -42,7 +43,6 @@ devDependencies:
   npm-run-all: 4.1.5
   parcel: 2.7.0
   web-ext: 6.8.0
-  webextension-polyfill: 0.8.0
 
 packages:
 
@@ -762,6 +762,17 @@ packages:
       '@parcel/types': 2.7.0_@parcel+core@2.7.0
     transitivePeerDependencies:
       - '@parcel/core'
+
+  /@parcel/reporter-bundle-analyzer/2.7.0_@parcel+core@2.7.0:
+    resolution: {integrity: sha512-bPvI+cF0cRXekGsavjemvYCFVsOW6XSNELHSb/b38oTPBE5zAhkDkk4ZNC0neIYqtxcOk/NMZZ4V7XPncddGVg==}
+    engines: {node: '>= 12.0.0', parcel: ^2.7.0}
+    dependencies:
+      '@parcel/plugin': 2.7.0_@parcel+core@2.7.0
+      '@parcel/utils': 2.7.0
+      nullthrows: 1.1.1
+    transitivePeerDependencies:
+      - '@parcel/core'
+    dev: true
 
   /@parcel/reporter-cli/2.7.0_@parcel+core@2.7.0:
     resolution: {integrity: sha512-80gEODg8cnAmnxGVuaSVDo8JJ54P9AA2bHwSs1cIkHWlJ3BjDQb83H31bBHncJ5Kn5kQ/j+7WjlqHpTCiOR9PA==}
@@ -4917,10 +4928,6 @@ packages:
       - safe-compare
       - supports-color
       - utf-8-validate
-    dev: true
-
-  /webextension-polyfill/0.8.0:
-    resolution: {integrity: sha512-a19+DzlT6Kp9/UI+mF9XQopeZ+n2ussjhxHJ4/pmIGge9ijCDz7Gn93mNnjpZAk95T4Tae8iHZ6sSf869txqiQ==}
     dev: true
 
   /when/3.7.7:
