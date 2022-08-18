@@ -10,7 +10,7 @@
     "start:firefox": "web-ext run --source-dir ./dist  --target=firefox-desktop",
     "start:chromium": "web-ext run --source-dir ./dist --target=chromium",
     "lint": "web-ext lint --source-dir dist",
-    "web-ext:build": "web-ext build --source-dir dist/webext-prod"
+    "zip": "web-ext build --source-dir dist/webext-prod"
   },
   "author": "FOBshippingpoint",
   "license": "MIT",
@@ -41,6 +41,9 @@
     "webext-prod": {}
   },
   "dependencies": {
+    "@parcel/compressor-gzip": "^2.7.0",
+    "@types/chrome": "^0.0.193",
+    "@types/firefox": "^0.0.31",
     "umbrellajs": "^3.3.1"
   }
 }

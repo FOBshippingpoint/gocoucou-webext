@@ -3,7 +3,7 @@ import { writeManifest } from "./write-manifest";
 
 async function preprocess() {
   copyLocales();
-  writeManifest(2);
+  writeManifest(3);
 }
 
 preprocess();

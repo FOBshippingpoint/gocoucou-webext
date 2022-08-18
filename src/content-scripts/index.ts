@@ -1,11 +1,11 @@
 import u from "umbrellajs";
 import Cursor from "./Cursor";
-import browser from "webextension-polyfill";
+// import browser from "webextension-polyfill";
 import { Sokoban, Settings } from "../types/index";
 import { getSettings } from "../utils/settings";
 import { log } from "../utils/log";
 import { keyboardEvent2text } from "../utils/shortcut-utils";
-
+import { browser } from "../utils/browser";
 // determine if the current page is dark mode using logo img src
 let darkmode = true;
 if (u("#logo img").attr("src").search("light") === -1) {

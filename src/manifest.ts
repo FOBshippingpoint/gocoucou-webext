@@ -48,21 +48,18 @@ export async function getManifest(version = 2) {
     homepage_url: "https://github.com/FOBshippingpoint/goocoucou-webext",
     icons: {
       16: "assets/icon-16.png",
-      48: "assets/icon-48.png",
-      128: "assets/icon-128.png",
+      64: "assets/icon-64.png",
     },
     action: {
       default_icon: {
         16: "assets/icon-16.png",
-        48: "assets/icon-48.png",
-        128: "assets/icon-128.png",
+        64: "assets/icon-64.png",
       },
       default_popup: "popup/index.html",
     },
     options_ui: {
       page: "options/index.html",
       open_in_tab: true,
-      chrome_style: false,
     },
     background: {
       service_worker: "background/index.ts",
@@ -71,7 +68,7 @@ export async function getManifest(version = 2) {
       {
         matches: ["*://www.google.com/*"],
         js: ["content-scripts/index.ts"],
-        css: ["content-scripts/index.css"],
+        css: ["assets/style.css"],
       },
     ],
     default_locale: "en",

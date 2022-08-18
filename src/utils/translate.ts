@@ -1,5 +1,6 @@
 import u from "umbrellajs";
-import browser from "webextension-polyfill";
+// import browser from "webextension-polyfill";
+import { browser } from "../utils/browser";
 
 export function translate() {
   u("[data-msg]").each(function (node) {

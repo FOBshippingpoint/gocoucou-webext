@@ -1,4 +1,5 @@
-import browser from "webextension-polyfill";
+// import browser from "webextension-polyfill";
+import { browser } from "../utils/browser";
 import u from "umbrellajs";
 import { defaultSettings } from "../settings/default-settings";
 import { isModifierOnly, keyboardEvent2text } from "../utils/shortcut-utils";
