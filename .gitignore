@@ -4,3 +4,4 @@ dist
 pnpm-lock.yaml
 .parcel-cache
 web-ext-artifacts
+parcel-bundle-reports
