@@ -4,8 +4,8 @@ export const defaultSettings: Settings = {
   other_settings: {
     sokoban_style: 'left_line_style',
     char_to_display: {
-      odd: '科',
-      even: '皓'
+      odd: '+',
+      even: '-'
     },
     debug_mode: false
   },

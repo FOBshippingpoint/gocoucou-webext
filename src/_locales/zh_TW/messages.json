@@ -1,146 +1,146 @@
 {
-  extension_description: {
-    message: '用快捷鍵瀏覽谷歌的搜尋結果',
-    description: 'Description of the extension.'
+  "extension_description": {
+    "message": "用快捷鍵瀏覽谷歌的搜尋結果",
+    "description": "Description of the extension."
   },
-  settings: {
-    message: '設定',
-    description: 'A link in popup page.'
+  "settings": {
+    "message": "設定",
+    "description": "A link in popup page."
   },
-  doc_title_settings: {
-    message: 'Goocoucou - 設定',
-    description: "Title of the extension's options page."
+  "doc_title_settings": {
+    "message": "Goocoucou - 設定",
+    "description": "Title of the extension's options page."
   },
-  shortcuts: {
-    message: '快捷鍵',
-    description: 'A tab button name in options page.'
+  "shortcuts": {
+    "message": "快捷鍵",
+    "description": "A tab button name in options page."
   },
-  other_settings: {
-    message: '其他設定',
-    description: 'A tab button name in options page.'
+  "other_settings": {
+    "message": "其他設定",
+    "description": "A tab button name in options page."
   },
-  sokoban_style: {
-    message: '焦點樣式',
-    description: 'The legend of form.'
+  "sokoban_style": {
+    "message": "焦點樣式",
+    "description": "The legend of form."
   },
-  style_preview: {
-    message: '樣式預覽',
-    description: 'Text of selected search result style preview.'
+  "style_preview": {
+    "message": "樣式預覽",
+    "description": "Text of selected search result style preview."
   },
-  left_line_style: {
-    message: 'SearXNG風格',
-    description: 'Text of selected search result style.'
+  "left_line_style": {
+    "message": "SearXNG風格",
+    "description": "Text of selected search result style."
   },
-  dotted_rect_style: {
-    message: '虛線',
-    description: 'Text of selected search result style.'
+  "dotted_rect_style": {
+    "message": "虛線",
+    "description": "Text of selected search result style."
   },
-  char_to_display: {
-    message: '搜尋結果數量超過$MAX_NUM$時顯示的字',
-    description: 'The legend of form.',
-    placeholders: {
-      MAX_NUM: {
-        content: '$1',
-        example: '10'
+  "char_to_display": {
+    "message": "搜尋結果數量超過$MAX_NUM$時顯示的字",
+    "description": "The legend of form.",
+    "placeholders": {
+      "MAX_NUM": {
+        "content": "$1",
+        "example": "10"
       }
     }
   },
-  odd: {
-    message: '搜尋結果編號為奇數',
-    description: 'The description of odd in other settings.'
+  "odd": {
+    "message": "搜尋結果編號為奇數",
+    "description": "The description of odd in other settings."
   },
-  even: {
-    message: '搜尋結果編號為偶數',
-    description: 'The description of even in other settings.'
+  "even": {
+    "message": "搜尋結果編號為偶數",
+    "description": "The description of even in other settings."
   },
-  reset_all: {
-    message: '重置所有設定，包含快捷鍵',
-    description: 'The description of reset all button in other settings.'
+  "reset_all": {
+    "message": "重置所有設定，包含快捷鍵",
+    "description": "The description of reset all button in other settings."
   },
-  confirm_reset_all: {
-    message: '確定要重置所有設定（包含快捷鍵）嗎？',
-    description: 'The message shown in the confirmation dialog.'
+  "confirm_reset_all": {
+    "message": "確定要重置所有設定（包含快捷鍵）嗎？",
+    "description": "The message shown in the confirmation dialog."
   },
-  debug_checkbox: {
-    message: '啟用偵錯模式（會印在控制台）',
-    description: 'The description of reset all button in other settings.'
+  "debug_checkbox": {
+    "message": "啟用偵錯模式（會印在控制台）",
+    "description": "The description of reset all button in other settings."
   },
-  how_to_use: {
-    message: '使用說明',
-    description: 'A tab button name in options page.'
+  "how_to_use": {
+    "message": "使用說明",
+    "description": "A tab button name in options page."
   },
-  how_to_use_content: {
-    message: '在谷歌搜尋結果頁面按下快捷鍵。',
-    description: 'The description of how to use.'
+  "how_to_use_content": {
+    "message": "在谷歌搜尋結果頁面按下快捷鍵。",
+    "description": "The description of how to use."
   },
-  about: {
-    message: '關於',
-    description: 'A tab button name in options page.'
+  "about": {
+    "message": "關於",
+    "description": "A tab button name in options page."
   },
-  about_content: {
-    message: '我快捷鍵中毒，可是谷歌搜尋沒有內建快捷鍵，所以我只好自己寫。',
-    description: 'The description of about.'
+  "about_content": {
+    "message": "我快捷鍵中毒，可是谷歌搜尋沒有內建快捷鍵，所以我只好自己寫。",
+    "description": "The description of about."
   },
-  upward: {
-    message: '下一個搜尋結果',
-    description: 'The shortcut description for options page.'
+  "upward": {
+    "message": "下一個搜尋結果",
+    "description": "The shortcut description for options page."
   },
-  downward: {
-    message: '上一個搜尋結果',
-    description: 'The shortcut description for options page.'
+  "downward": {
+    "message": "上一個搜尋結果",
+    "description": "The shortcut description for options page."
   },
-  open_in_current_tab: {
-    message: '在當前分頁開啟',
-    description: 'The shortcut description for options page.'
+  "open_in_current_tab": {
+    "message": "在當前分頁開啟",
+    "description": "The shortcut description for options page."
   },
-  open_in_new_tab_but_stay_on_current: {
-    message: '在其他分頁開啟',
-    description: 'The shortcut description for options page.'
+  "open_in_new_tab_but_stay_on_current": {
+    "message": "在其他分頁開啟",
+    "description": "The shortcut description for options page."
   },
-  open_in_new_tab_and_focus: {
-    message: '在其他分頁開啟並切換',
-    description: 'The shortcut description for options page.'
+  "open_in_new_tab_and_focus": {
+    "message": "在其他分頁開啟並切換",
+    "description": "The shortcut description for options page."
   },
-  jump_to_result_keys: {
-    message: '跳到搜尋結果',
-    description: 'The shortcut description for options page.'
+  "jump_to_result_keys": {
+    "message": "跳到搜尋結果",
+    "description": "The shortcut description for options page."
   },
-  next_page: {
-    message: '換到下一頁搜尋結果',
-    description: 'The shortcut description for options page.'
+  "next_page": {
+    "message": "換到下一頁搜尋結果",
+    "description": "The shortcut description for options page."
   },
-  previous_page: {
-    message: '換到上一頁搜尋結果',
-    description: 'The shortcut description for options page.'
+  "previous_page": {
+    "message": "換到上一頁搜尋結果",
+    "description": "The shortcut description for options page."
   },
-  reset_button: {
-    message: '重置',
-    description: 'Reset current shortcut to default.'
+  "reset_button": {
+    "message": "重置",
+    "description": "Reset current shortcut to default."
   },
-  save_button: {
-    message: '儲存',
-    description: 'Save settings.'
+  "save_button": {
+    "message": "儲存",
+    "description": "Save settings."
   },
-  too_long: {
-    message: '必須小於等於$MAX_NUM$',
-    description: 'Jump to result keys invalid info.',
-    placeholders: {
-      MAX_NUM: {
-        content: '$1',
-        example: '10'
+  "too_long": {
+    "message": "必須小於等於$MAX_NUM$",
+    "description": "Jump to result keys invalid info.",
+    "placeholders": {
+      "MAX_NUM": {
+        "content": "$1",
+        "example": "10"
       }
     }
   },
-  must_be_unique_list: {
-    message: '每個鍵都必須是獨一無二的',
-    description: 'Jump to result keys invalid info.'
+  "must_be_unique_list": {
+    "message": "每個鍵都必須是獨一無二的",
+    "description": "Jump to result keys invalid info."
   },
-  valid_shortcut: {
-    message: '沒問題 :)',
-    description: 'Jump to result keys valid info.'
+  "valid_shortcut": {
+    "message": "沒問題 :)",
+    "description": "Jump to result keys valid info."
   },
-  error_while_saving: {
-    message: '儲存時發生錯誤，查看控制台獲得更多訊息。',
-    description: 'The alert message shown when error occurs while saving.'
+  "error_while_saving": {
+    "message": "儲存時發生錯誤，查看控制台獲得更多訊息。",
+    "description": "The alert message shown when error occurs while saving."
   }
 }
