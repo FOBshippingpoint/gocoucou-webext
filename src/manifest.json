@@ -1,5 +1,5 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "Goocoucou",
   "version": "1.0.0",
   "author": "FOBshippingpoint",
@@ -9,11 +9,8 @@
     "16": "assets/icon-16.png",
     "64": "assets/icon-64.png"
   },
-  "action": {
-    "default_icon": {
-      "16": "assets/icon-16.png",
-      "64": "assets/icon-64.png"
-    },
+  "browser_action": {
+    "default_icon": "assets/icon-16.png",
     "default_popup": "popup/index.html"
   },
   "options_ui": {
@@ -21,7 +18,9 @@
     "open_in_tab": true
   },
   "background": {
-    "service_worker": "background/index.ts"
+    "scripts": [
+      "background/index.ts"
+    ]
   },
   "content_scripts": [
     {

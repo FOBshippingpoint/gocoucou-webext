@@ -1,4 +1,3 @@
-// import browser from "webextension-polyfill";
 import { browser } from "../utils/browser";
 import u from "umbrellajs";
 import { defaultSettings } from "../settings/default-settings";

@@ -1,4 +1,4 @@
-const browser = globalThis.chrome ? globalThis.chrome : globalThis.browser;
+const browser = globalThis.browser ? globalThis.browser : globalThis.chrome;
 
 browser.runtime.onMessage.addListener((message) => {
   if (message.command === "open_in_new_tab") {
