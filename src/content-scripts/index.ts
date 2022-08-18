@@ -20,7 +20,7 @@ function main(settings: Settings) {
   const { shortcuts } = settings;
   const focusClassName =
     "focus-" +
-    settings["other_settings"]["sokoban_style"] +
+    settings.other_settings.sokoban_style +
     (darkmode ? "-dark" : "");
   const pageLinks = {
     next: u("#pnnext").attr("href"),
@@ -31,13 +31,13 @@ function main(settings: Settings) {
   u(
     "div[data-sokoban-container], div.V3FYCF, div.WC0BKe, div.PhiYYd.RdksUd.QBl4oe"
   ).each(function (node, i) {
-    let key = shortcuts["jump_to_result_keys"][i];
+    let key = shortcuts.jump_to_result_keys[i];
     // if result is greater than keys, use two symbols to represent it
     if (!key) {
       key =
         i % 2 === 0
-          ? settings["other_settings"]["char_to_display"]["even"]
-          : settings["other_settings"]["char_to_display"]["odd"];
+          ? settings.other_settings.char_to_display.even
+          : settings.other_settings.char_to_display.odd;
     }
     const wrapper = u(node).wrap("<div class='sokoban-wrap'>");
     wrapper.prepend(

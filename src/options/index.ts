@@ -24,7 +24,7 @@ getSettings((settings) => {
     const command = u(node).attr("id");
     u(node).attr("value", settings.shortcuts[command]);
   });
-  let newShortcuts = settings.shortcuts;
+  const newShortcuts = settings.shortcuts;
   shortcutsSettings(newShortcuts, settings);
   otherSettings(settings);
 });
@@ -95,24 +95,24 @@ function shortcutsSettings(newShortcuts, settings) {
 }
 
 function otherSettings(settings: Settings) {
-  const otherSettings = settings["other_settings"];
+  const otherSettings = settings.other_settings;
   // init other settings
   // init style of selected settings
-  u("#" + otherSettings["sokoban_style"]).attr("checked", true);
+  u("#" + otherSettings.sokoban_style).attr("checked", true);
 
   // style settings
   u("[name=sokoban_style]").on("change", function (e) {
-    otherSettings["sokoban_style"] = e.target.value;
+    otherSettings.sokoban_style = e.target.value;
     saveOtherSettings();
   });
 
   // init char to display
   u("form#char_to_display input").each(function (node) {
-    node.value = otherSettings["char_to_display"][node.id];
+    node.value = otherSettings.char_to_display[node.id];
   });
 
   u("form#char_to_display input").on("change", function (e) {
-    otherSettings["char_to_display"][e.target.id] = e.target.value;
+    otherSettings.char_to_display[e.target.id] = e.target.value;
     saveOtherSettings();
   });
 
@@ -120,8 +120,7 @@ function otherSettings(settings: Settings) {
   u("#tab-other-settings .reset").on("click", function (e) {
     const input = u(e.target).siblings("input").first();
 
-    input.value =
-      defaultSettings["other_settings"]["char_to_display"][input.id];
+    input.value = defaultSettings.other_settings.char_to_display[input.id];
   });
 
   // reset all settings
@@ -141,7 +140,7 @@ function otherSettings(settings: Settings) {
 
   // debug mode
   u("#debug_checkbox").on("change", function (e) {
-    otherSettings["debug_mode"] = e.target.checked;
+    otherSettings.debug_mode = e.target.checked;
     saveOtherSettings();
   });
 

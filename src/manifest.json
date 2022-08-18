@@ -18,26 +18,15 @@
     "open_in_tab": true
   },
   "background": {
-    "scripts": [
-      "background/index.ts"
-    ]
+    "scripts": ["background/index.ts"]
   },
   "content_scripts": [
     {
-      "matches": [
-        "*://www.google.com/*"
-      ],
-      "js": [
-        "content-scripts/index.ts"
-      ],
-      "css": [
-        "assets/style.css"
-      ]
+      "matches": ["*://www.google.com/*"],
+      "js": ["content-scripts/index.ts"],
+      "css": ["assets/style.css"]
     }
   ],
   "default_locale": "en",
-  "permissions": [
-    "tabs",
-    "storage"
-  ]
+  "permissions": ["tabs", "storage"]
 }
