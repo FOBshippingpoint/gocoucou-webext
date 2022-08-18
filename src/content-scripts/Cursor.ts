@@ -1,40 +1,40 @@
 export default class Cursor {
-  #index = 0;
-  #maxLength: number;
+  #index = 0
+  #maxLength: number
 
-  constructor(maxLength: number) {
-    this.#maxLength = maxLength;
+  constructor (maxLength: number) {
+    this.#maxLength = maxLength
   }
 
-  downward() {
+  downward () {
     if (this.#index < this.#maxLength - 1) {
-      this.#index++;
+      this.#index++
     } else {
-      this.#index = 0;
+      this.#index = 0
     }
 
-    return this.#index;
+    return this.#index
   }
 
-  upward() {
+  upward () {
     if (this.#index > 0) {
-      this.#index--;
+      this.#index--
     } else {
-      this.#index = this.#maxLength - 1;
+      this.#index = this.#maxLength - 1
     }
 
-    return this.#index;
+    return this.#index
   }
 
-  jumpTo(index: number) {
+  jumpTo (index: number) {
     if (index < this.#maxLength && index >= 0) {
-      this.#index = index;
+      this.#index = index
     }
 
-    return this.#index;
+    return this.#index
   }
 
-  get index() {
-    return this.#index;
+  get index () {
+    return this.#index
   }
 }

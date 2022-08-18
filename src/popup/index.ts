@@ -1,9 +1,9 @@
 // import browser from "webextension-polyfill";
-import { browser } from "../utils/browser";
-import { translate } from "../utils/translate";
+import { browser } from '../utils/browser'
+import { translate } from '../utils/translate'
 
-translate();
+translate()
 
-document.getElementById("options").addEventListener("click", () => {
-  browser.runtime.openOptionsPage();
-});
+document.getElementById('options').addEventListener('click', () => {
+  browser.runtime.openOptionsPage()
+})

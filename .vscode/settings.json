@@ -8,5 +8,6 @@
     "sokuban",
     "sokubans",
     "umbrellajs"
-  ]
+  ],
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint"
 }
