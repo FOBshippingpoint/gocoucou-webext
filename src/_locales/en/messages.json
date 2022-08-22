@@ -145,6 +145,16 @@
     "description": "The shortcut description for options page."
   },
 
+  "go_to_search_box": {
+    "message": "Go to search box",
+    "description": "The shortcut description for options page."
+  },
+
+  "go_to_search_box_and_select_text": {
+    "message": "Go to search box and select text",
+    "description": "The shortcut description for options page."
+  },
+
   "reset_button": {
     "message": "Reset",
     "description": "Reset current shortcut to default."

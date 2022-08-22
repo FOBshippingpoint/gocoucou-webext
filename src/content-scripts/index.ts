@@ -70,12 +70,13 @@ function main (settings: Settings) {
         scroll()
         markFocused(oldIdx)
         break
-      case 'jump_to_result_keys':
+      case 'jump_to_result_keys': {
         const key = keyboardEvent2text(e)
         cursor.jumpTo(shortcuts.jump_to_result_keys.indexOf(key))
         scroll()
         markFocused(oldIdx)
         break
+      }
       case 'open_in_current_tab':
         window.location.replace(sokobans[cursor.index].href)
         return
@@ -104,6 +105,25 @@ function main (settings: Settings) {
         if (pageLinks.prev) {
           window.location.assign(pageLinks.prev)
         }
+        break
+      case 'go_to_search_box': {
+        e.preventDefault()
+        const input = u('input.gLFyf.gsfi').first()
+        input.focus()
+        // this will move cursor to the end
+        const value = input.value
+        input.value = ''
+        input.value = value
+        break
+      }
+      case 'go_to_search_box_and_select_text':
+        e.preventDefault()
+        u('input.gLFyf.gsfi').first()?.select()
+        break
+      case 'focus_on_result_type_tabs':
+        console.log('hello')
+        console.log('test', u('.MUFPAc').first().children)
+        u('.MUFPAc').first().children[3].focus()
         break
     }
   })

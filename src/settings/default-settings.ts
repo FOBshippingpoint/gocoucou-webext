@@ -17,6 +17,9 @@ export const defaultSettings: Settings = {
     open_in_new_tab_but_stay_on_current: 'Ctrl + Enter',
     open_in_new_tab_and_focus: 'Ctrl + Shift + Enter',
     next_page: 'L',
-    previous_page: 'H'
+    previous_page: 'H',
+    go_to_search_box: 'I',
+    go_to_search_box_and_select_text: 'O',
+    focus_on_result_type_tabs: 'T'
   }
 }

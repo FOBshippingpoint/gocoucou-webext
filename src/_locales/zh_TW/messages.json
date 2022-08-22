@@ -117,6 +117,14 @@
     "message": "換到上一頁搜尋結果",
     "description": "The shortcut description for options page."
   },
+  "go_to_search_box": {
+    "message": "游標移至搜尋欄",
+    "description": "The shortcut description for options page."
+  },
+  "go_to_search_box_and_select_text": {
+    "message": "選取搜尋欄文字",
+    "description": "The shortcut description for options page."
+  },
   "reset_button": {
     "message": "重置",
     "description": "Reset current shortcut to default."
