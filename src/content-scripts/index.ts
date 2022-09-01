@@ -5,6 +5,7 @@ import { getSettings } from '../utils/settings'
 import { log } from '../utils/log'
 import { keyboardEvent2text } from '../utils/shortcut-utils'
 import { browser } from '../utils/browser'
+
 // determine if the current page is dark mode using logo img src
 let darkmode = true
 if (u('#logo img').attr('src').search('light') === -1) {
@@ -22,10 +23,6 @@ function main (settings: Settings) {
     'focus-' +
     settings.other_settings.sokoban_style +
     (darkmode ? '-dark' : '')
-  const pageLinks = {
-    next: u('#pnnext').attr('href'),
-    prev: u('#pnprev').attr('href')
-  }
 
   // finding sokobans
   u(
@@ -97,14 +94,10 @@ function main (settings: Settings) {
         })
         break
       case 'next_page':
-        if (pageLinks.next) {
-          window.location.assign(pageLinks.next)
-        }
+        window.location.assign(u('#pnnext').attr('href'))
         break
       case 'previous_page':
-        if (pageLinks.prev) {
-          window.location.assign(pageLinks.prev)
-        }
+        window.location.assign(u('#pnprev').attr('href'))
         break
       case 'go_to_search_box': {
         e.preventDefault()
@@ -118,12 +111,10 @@ function main (settings: Settings) {
       }
       case 'go_to_search_box_and_select_text':
         e.preventDefault()
-        u('input.gLFyf.gsfi').first()?.select()
+        u('input.gLFyf.gsfi').first().select()
         break
       case 'focus_on_result_type_tabs':
-        console.log('hello')
-        console.log('test', u('.MUFPAc').first().children)
-        u('.MUFPAc').first().children[3].focus()
+        u('div.hdtb-mitem:nth-child(2) > a:nth-child(1)').first().focus()
         break
     }
   })

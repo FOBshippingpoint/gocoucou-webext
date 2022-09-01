@@ -1,5 +1,5 @@
-import { browser } from '../utils/browser'
 import u from 'umbrellajs'
+import { browser } from '../utils/browser'
 import { defaultSettings } from '../settings/default-settings'
 import { isModifierOnly, keyboardEvent2text } from '../utils/shortcut-utils'
 import { Settings } from '../types/index'
@@ -15,7 +15,7 @@ u('#tabs button').on('click', function (e) {
   u(e.target).addClass('pure-button-active')
 
   u('#tab-contents > div').addClass('hidden')
-  u('#tab-' + u(e.target).data('msg')).removeClass('hidden')
+  u('#tab-' + u(e.target).data('i18n')).removeClass('hidden')
 })
 
 // init settings

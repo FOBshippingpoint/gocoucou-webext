@@ -1,0 +1,21 @@
+.btn,.btn:hover {
+    text-decoration: none
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    border: 0;
+    background: #ebebeb;
+    padding: 6px 10px;
+    font-size: 16px
+}
+
+.btn:hover {
+    background: #cfcfcf
+}
+
+.btn>span {
+    margin-left: 4px
+}

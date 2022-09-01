@@ -125,6 +125,10 @@
     "message": "選取搜尋欄文字",
     "description": "The shortcut description for options page."
   },
+  "focus_on_result_type_tabs": {
+    "message": "選取結果類型欄",
+    "description": "The shortcut description for options page."
+  },
   "reset_button": {
     "message": "重置",
     "description": "Reset current shortcut to default."

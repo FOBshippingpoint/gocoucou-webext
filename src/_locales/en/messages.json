@@ -35,7 +35,7 @@
   },
 
   "left_line_style": {
-    "message": "Left line style",
+    "message": "SearXNG style",
     "description": "Text of selected search result style."
   },
 
@@ -152,6 +152,11 @@
 
   "go_to_search_box_and_select_text": {
     "message": "Go to search box and select text",
+    "description": "The shortcut description for options page."
+  },
+
+  "focus_on_result_type_tabs": {
+    "message": "Focus on result type tabs",
     "description": "The shortcut description for options page."
   },
 
