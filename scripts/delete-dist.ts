@@ -1,7 +1,6 @@
 import fs from "fs-extra";
-import { getManifest } from "../src/manifest";
-import { r, log, isDev } from "./utils";
-import chokidar from "chokidar";
+import { getManifest } from "../src/manifest.ts";
+import { r, log, isDev } from "./utils.ts";
 import logSymbols from "log-symbols";
 
 export async function deleteDist() {

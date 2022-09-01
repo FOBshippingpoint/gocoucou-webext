@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
 import type { Manifest } from 'webextension-polyfill'
 import type PkgType from '../package.json'
-import { r } from '../scripts/utils'
+import { r } from '../scripts/utils.ts'
 
 const pkg = fs.readJSONSync(r('package.json')) as typeof PkgType
 

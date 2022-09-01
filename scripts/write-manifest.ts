@@ -1,21 +1,10 @@
-import fs from "fs-extra";
-import { getManifest } from "../src/manifest";
-import { r, log, isDev } from "./utils";
-import chokidar from "chokidar";
+import * as fs from "fs";
+import { getManifest } from "../src/manifest.ts";
+import { r, log, isDev } from "./utils.ts";
 import logSymbols from "log-symbols";
 
 export async function writeManifest(version: number) {
-  await fs.writeJSON(r("src/manifest.json"), await getManifest(version), {
-    spaces: 2,
-  });
-  log.success(logSymbols.success, "write manifest");
+  const data = JSON.stringify(await getManifest(version));
+  fs.writeFileSync(r("src/manifest.json"), data);
+  log.success(logSymbols.success, "write manifest version " + version);
 }
-
-// if (isDev) {
-// chokidar
-//   .watch([r("src/manifest.ts"), r("package.json")])
-//   .on("change", async () => {
-//     log.info("change detected: src/manifest.ts");
-//     await writeManifest();
-//   });
-// }

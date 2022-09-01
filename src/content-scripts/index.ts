@@ -75,7 +75,7 @@ function main (settings: Settings) {
         break
       }
       case 'open_in_current_tab':
-        window.location.replace(sokobans[cursor.index].href)
+      	window.location.assign(sokobans[cursor.index].href)
         return
       case 'open_in_new_tab_but_stay_on_current':
         // browser.tabs API cannot access in content script.

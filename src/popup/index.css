@@ -1,5 +1,10 @@
+body {
+    min-width: 100px;
+    display: grid;
+}
+
 .btn,.btn:hover {
-    text-decoration: none
+    text-decoration: none;
 }
 
 .btn {
@@ -9,13 +14,13 @@
     border: 0;
     background: #ebebeb;
     padding: 6px 10px;
-    font-size: 16px
+    font-size: 16px;
 }
 
 .btn:hover {
-    background: #cfcfcf
+    background: #cfcfcf;
 }
 
 .btn>span {
-    margin-left: 4px
+    margin-left: 4px;
 }
