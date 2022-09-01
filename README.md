@@ -8,7 +8,7 @@ A web extension that helps you navigate Google Search results using shortcuts.
 
 ## Intro Video
 
-![Demo video on YouTube](https://img.youtube.com/vi/Xa_MYxBUB00/0.jpg)](https://youtu.be/Xa_MYxBUB00)
+[![Demo video on YouTube](https://img.youtube.com/vi/Xa_MYxBUB00/0.jpg)](https://youtu.be/Xa_MYxBUB00)
 
 ## Developing
 
