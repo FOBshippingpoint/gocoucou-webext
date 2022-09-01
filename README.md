@@ -30,7 +30,7 @@ To build run
 
 ```sh
 npm run build # parcel build
-npm run web-ext:build # this will create .zip file in web-ext-artifacts folder
+npm run pack:zip # this will create .zip file in web-ext-artifacts folder
 ```
 
 ## Translation
