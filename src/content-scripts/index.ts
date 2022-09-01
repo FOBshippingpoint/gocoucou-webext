@@ -26,7 +26,7 @@ function main (settings: Settings) {
 
   // finding sokobans
   u(
-    'div[data-sokoban-container], div.V3FYCF, div.WC0BKe, div.PhiYYd.RdksUd.QBl4oe'
+    'div[data-sokoban-container], div.V3FYCF, div.WC0BKe, div.PhiYYd.RdksUd.QBl4oe, div.BYM4Nd'
   ).each(function (node, i) {
     let key = shortcuts.jump_to_result_keys[i]
     // if result is greater than keys, use two symbols to represent it
