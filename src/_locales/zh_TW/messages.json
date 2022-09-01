@@ -28,15 +28,14 @@
     "description": "Text of selected search result style preview."
   },
   "left_line_style": {
-    "message": "SearXNG風格",
+    "message": "SearXNG 風格",
     "description": "Text of selected search result style."
   },
   "dotted_rect_style": {
     "message": "虛線",
     "description": "Text of selected search result style."
-  },
-  "rgb_style": {
-    "message": "RGB電競風",
+  }, "rgb_style": {
+    "message": "RGB 電競風",
     "description": "Text of selected search result style."
   },
   "char_to_display": {
@@ -66,7 +65,7 @@
     "description": "The message shown in the confirmation dialog."
   },
   "debug_checkbox": {
-    "message": "啟用偵錯模式（會印在控制台）",
+    "message": "啟用偵錯模式（印於控制台）",
     "description": "The description of reset all button in other settings."
   },
   "how_to_use": {
@@ -82,7 +81,7 @@
     "description": "A tab button name in options page."
   },
   "about_content": {
-    "message": "我快捷鍵中毒，可是谷歌搜尋沒有內建快捷鍵，所以我只好自己寫。",
+    "message": "我熱愛 vim 的快捷鍵，然而谷歌搜尋本身沒有這個功能，因此我自己撰寫了這個擴充功能圓夢。不過我最近發現谷歌在隱私這塊很糟糕，所以我改用 SearXNG、DuckDuckGO、StartPage，結果 SearXNG 跟 DuckDuckGo 早就有類似的功能了。",
     "description": "The description of about."
   },
   "upward": {
