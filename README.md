@@ -8,15 +8,20 @@ A web extension that helps you navigate Google Search results using shortcuts.
 
 ## Intro Video
 
-[![Demo video on YouTube](https://img.youtube.com/vi/Xa_MYxBUB00/0.jpg)](https://youtu.be/Xa_MYxBUB00)
+![Demo video on YouTube](https://img.youtube.com/vi/Xa_MYxBUB00/0.jpg)](https://youtu.be/Xa_MYxBUB00)
 
 ## Developing
 
 To develop run
 
 ```sh
-npm run dev
+# if you use firefox
+MANIFEST_VERSION=2 npm run dev
 npm run start:firefox
+
+# if you use chromium
+MANIFEST_VERSION=3 npm run dev
+npm run start:chromium
 ```
 
 ## Build
@@ -30,7 +35,7 @@ npm run web-ext:build # this will create .zip file in web-ext-artifacts folder
 
 ## Translation
 
-Translating on **[Translate Web-Ext](https://morikko.github.io/translate-web-extension/configure)**.
+Translating on [Translate Web-Ext](https://morikko.github.io/translate-web-extension/configure).
 
 1. Goto [Translate Web-Ext](https://morikko.github.io/translate-web-extension/configure)
 2. Paste following line in "Current Source for Translation"
@@ -39,11 +44,11 @@ Translating on **[Translate Web-Ext](https://morikko.github.io/translate-web-ext
 https://github.com/FOBshippingpoint/goocoucou-webext/blob/main/src/_locales/en/messages.json
 ```
 
-![step 2](https://i.imgur.com/wWRSGAb.png)]
+![step 2](https://i.imgur.com/wWRSGAb.png)
 
 3. Switch to Translate tab
 
-![step 3](https://i.imgur.com/qc3VCwf.png)]
+![step 3](https://i.imgur.com/qc3VCwf.png)
 
 4. Start translate
 
