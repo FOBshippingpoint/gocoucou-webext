@@ -36,7 +36,7 @@ export async function getManifest (version = 2) {
       }
     ],
     default_locale: 'en',
-    permissions: ['tabs', 'storage']
+    permissions: ['activeTab', 'storage']
   }
 
   const manifestV3: Manifest.WebExtensionManifest = {
@@ -72,7 +72,7 @@ export async function getManifest (version = 2) {
       }
     ],
     default_locale: 'en',
-    permissions: ['tabs', 'storage']
+    permissions: ['activeTab', 'storage']
   }
 
   if (version === 2) {

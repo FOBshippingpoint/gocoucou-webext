@@ -1,6 +1,6 @@
 {
   "name": "goocoucou-webext",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Google search result navigator",
   "scripts": {
     "preprocess": "ts-node-esm scripts/preprocess.ts",
