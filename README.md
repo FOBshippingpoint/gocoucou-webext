@@ -1,10 +1,11 @@
 # <sub><img src="./src/assets/icon-128.png" width=64px height=64px></sub> Goocoucou
 
-A web extension that helps you navigate Google Search results using shortcuts.
+A web extension that helps you navigate Google Search results using vim-like shortcuts.
 
-## Get Goocoucou
+[<img src="./img/firefox_badge.png" height="50px" alt="firefox addons">](https://addons.mozilla.org/firefox/addon/goocoucou/)
+[<img src="./img/chrome_badge.png" height="50px" alt="chrome web store">](https://chrome.google.com/webstore/detail/goocoucou/lelehgjajepbnhkhgndeepklpaoopcjc)
 
-[<img src="https://img.shields.io/amo/v/goocoucou?label=Firefox&logo=firefox&style=for-the-badge" align="left" alt="for Firefox">](https://addons.mozilla.org/firefox/addon/goocoucou/)<br/>
+If you like this extension, you can [buy me a coffee](https://www.buymeacoffee.com/sdovan1).
 
 ## Intro Video
 
@@ -35,7 +36,7 @@ npm run pack:zip # this will create .zip file in web-ext-artifacts folder
 
 ## Translation
 
-Translating on [Translate Web-Ext](https://morikko.github.io/translate-web-extension/configure).
+You can translate on [Translate Web-Ext](https://morikko.github.io/translate-web-extension/configure).
 
 1. Goto [Translate Web-Ext](https://morikko.github.io/translate-web-extension/configure)
 2. Paste following line in "Current Source for Translation"
@@ -63,4 +64,4 @@ https://github.com/FOBshippingpoint/goocoucou-webext/blob/main/src/_locales/en/m
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/FOBshippingpoint/goocoucou-webext/blob/main/LICENSE)
