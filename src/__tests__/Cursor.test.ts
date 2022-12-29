@@ -2,7 +2,7 @@ import { describe, expect, test } from "@jest/globals";
 import Cursor from "../content-scripts/Cursor";
 
 describe("cursor", () => {
-  const MAX_LENGTH = 5;
+  const MAX_LENGTH = 3;
   const cursor = new Cursor(MAX_LENGTH);
 
   test("initial index", () => {
@@ -22,6 +22,8 @@ describe("cursor", () => {
     expect(cursor.index).toBe(1);
     cursor.downward();
     expect(cursor.index).toBe(2);
+    cursor.downward();
+    expect(cursor.index).toBe(0);
   });
 
   test("jump to", () => {
