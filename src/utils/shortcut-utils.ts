@@ -9,7 +9,7 @@ export function keyboardEvent2text (keyboardEvent: KeyboardEvent) {
     return keyboardEvent.join('')
   }
 
-  const modifiers: String[] = []
+  const modifiers: string[] = []
   if (keyboardEvent.ctrlKey) modifiers.push('Ctrl')
   if (keyboardEvent.shiftKey) modifiers.push('Shift')
   if (keyboardEvent.altKey) modifiers.push('Alt')

@@ -38,24 +38,6 @@
     "message": "RGB 電競風",
     "description": "Text of selected search result style."
   },
-  "char_to_display": {
-    "message": "搜尋結果數量超過$MAX_NUM$時顯示的字",
-    "description": "The legend of form.",
-    "placeholders": {
-      "MAX_NUM": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
-  },
-  "odd": {
-    "message": "搜尋結果編號為奇數",
-    "description": "The description of odd in other settings."
-  },
-  "even": {
-    "message": "搜尋結果編號為偶數",
-    "description": "The description of even in other settings."
-  },
   "reset_all": {
     "message": "重置所有設定，包含快捷鍵",
     "description": "The description of reset all button in other settings."
@@ -104,18 +86,6 @@
     "message": "在其他分頁開啟並切換",
     "description": "The shortcut description for options page."
   },
-  "jump_to_result_keys": {
-    "message": "跳到搜尋結果",
-    "description": "The shortcut description for options page."
-  },
-  "next_page": {
-    "message": "換到下一頁搜尋結果",
-    "description": "The shortcut description for options page."
-  },
-  "previous_page": {
-    "message": "換到上一頁搜尋結果",
-    "description": "The shortcut description for options page."
-  },
   "go_to_search_box": {
     "message": "游標移至搜尋欄",
     "description": "The shortcut description for options page."
@@ -135,24 +105,6 @@
   "save_button": {
     "message": "儲存",
     "description": "Save settings."
-  },
-  "too_long": {
-    "message": "必須小於等於$MAX_NUM$",
-    "description": "Jump to result keys invalid info.",
-    "placeholders": {
-      "MAX_NUM": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
-  },
-  "must_be_unique_list": {
-    "message": "每個鍵都必須是獨一無二的",
-    "description": "Jump to result keys invalid info."
-  },
-  "valid_shortcut": {
-    "message": "沒問題 :)",
-    "description": "Jump to result keys valid info."
   },
   "error_while_saving": {
     "message": "儲存時發生錯誤，查看控制台獲得更多訊息。",

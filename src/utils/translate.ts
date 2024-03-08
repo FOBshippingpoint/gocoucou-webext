@@ -1,18 +1,8 @@
-import u from 'umbrellajs'
-import { browser } from '../utils/browser'
+import platform from "./platform";
+import { $$ } from "./dollars";
 
-export function translate () {
-  u('[data-i18n]').each(function (node) {
-    const key = u(node).data('i18n')
-    let text = ''
-    if (key === 'char_to_display' || key === 'too_long') {
-      text = browser.i18n.getMessage(key, 10)
-    } else {
-      text = browser.i18n.getMessage(key)
-    }
-    if (text === '') {
-      text = key
-    }
-    u(node).append(document.createTextNode(text))
-  })
+export function translate() {
+	for (const el of $$("[data-i18n]")) {
+		el.textContent = platform.i18n.getMessage(el.dataset.i18n);
+	}
 }

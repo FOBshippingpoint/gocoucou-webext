@@ -1,7 +1,11 @@
-const browser = globalThis.browser ? globalThis.browser : globalThis.chrome
+import platform from "../utils/platform";
 
-browser.runtime.onMessage.addListener((message) => {
+platform.runtime.onMessage.addListener((message) => {
   if (message.command === 'open_in_new_tab') {
-    browser.tabs.create({ url: message.url, active: message.active })
+    platform.tabs.create({ url: message.url, active: message.active })
   }
+})
+
+platform.browserAction.onClicked.addListener(() => {
+  platform.runtime.openOptionsPage();
 })

@@ -1,169 +1,101 @@
-import u from 'umbrellajs'
-import { browser } from '../utils/browser'
-import { defaultSettings } from '../settings/default-settings'
-import { isModifierOnly, keyboardEvent2text } from '../utils/shortcut-utils'
-import { Settings } from '../types/index'
-import { translate } from '../utils/translate'
-import { log } from '../utils/log'
-import { getSettings } from '../utils/settings'
+import platform from "../utils/platform";
+import { defaultSettings } from "../settings/defaultSettings";
+import { keyboardEvent2text } from "../utils/shortcut-utils";
+import { Settings } from "../types/index";
+import { translate } from "../utils/translate";
+import { log } from "../utils/log";
+import { loadSettings } from "../utils/settings";
+import { $, $$ } from "../utils/dollars";
 
-translate()
-
-// tabs control
-u('#tabs button').on('click', function (e) {
-  u('#tabs button').removeClass('pure-button-active')
-  u(e.target).addClass('pure-button-active')
-
-  u('#tab-contents > div').addClass('hidden')
-  u('#tab-' + u(e.target).data('i18n')).removeClass('hidden')
-})
+translate();
 
 // init settings
-getSettings((settings) => {
-  u('#tab-shortcuts input').each(function (node) {
-    const command = u(node).attr('id')
-    u(node).attr('value', settings.shortcuts[command])
-  })
-  const newShortcuts = settings.shortcuts
-  shortcutsSettings(newShortcuts, settings)
-  otherSettings(settings)
-})
+loadSettings((settings) => {
+	$$<HTMLInputElement>("#tab-shortcuts input").forEach((el) => {
+		const command = el.id;
+		el.value = settings.shortcuts[command];
+	});
+	const newShortcuts = settings.shortcuts;
+	shortcutsSettings(newShortcuts, settings);
+	otherSettings(settings);
+});
 
-function shortcutsSettings (newShortcuts, settings) {
-  u('#tab-shortcuts input')
-    .not('#jump_to_result_keys')
-    .on('keydown', function (e: KeyboardEvent) {
-      if (e.key === 'Tab') return
-      e.preventDefault()
-      const input: HTMLInputElement = u(e.target).first()
-      newShortcuts[input.id] = keyboardEvent2text(e)
-      input.value = newShortcuts[input.id]
-    })
+function shortcutsSettings(
+	newShortcuts: Settings["shortcuts"],
+	settings: Settings,
+) {
+	$$<HTMLInputElement>("#tab-shortcuts input").forEach((el) => {
+		el.addEventListener("keydown", (e) => {
+			if (e.key === "Tab") return;
+			e.preventDefault();
+			const input = e.target as HTMLInputElement;
+			newShortcuts[input.id] = keyboardEvent2text(e);
+			input.value = newShortcuts[input.id];
+		});
+	});
 
-  // clear shortcut when click
-  u('#jump_to_result_keys').on('click', function (e: MouseEvent) {
-    const input = e.target as HTMLInputElement
-    input.value = ''
-  })
-  u('#jump_to_result_keys').on('keydown', function (e: KeyboardEvent) {
-    if (e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'Tab') {
-      e.preventDefault()
-    }
+	// reset shortcut
+	$$<HTMLButtonElement>("#tab-shortcuts .reset").forEach((el) => {
+		el.addEventListener("click", () => {
+			const input = el.previousSibling as HTMLInputElement;
 
-    if (isModifierOnly(e.key) || e.key.length !== 1) return
+			const command = input.id;
+			input.value = defaultSettings.shortcuts[command];
+		});
+	});
 
-    const input: HTMLInputElement = u(e.target).first()
-
-    if (input.value.length >= 10) {
-      u('#jump_to_result_keys_inline_message').text(
-        browser.i18n.getMessage('too_long', 10)
-      )
-      return
-    }
-
-    if (input.value.includes(e.key.toUpperCase())) {
-      u('#jump_to_result_keys_inline_message').text(
-        browser.i18n.getMessage('must_be_unique_list')
-      )
-      return
-    }
-
-    u('#jump_to_result_keys_inline_message').text(
-      browser.i18n.getMessage('valid_shortcut')
-    )
-
-    input.value += e.key.toUpperCase()
-    newShortcuts[input.id] = input.value
-  })
-
-  // reset shortcut
-  u('#tab-shortcuts .reset').on('click', function (e) {
-    const input = u(e.target).siblings('input').first()
-
-    const command = input.id
-    input.value = defaultSettings.shortcuts[command]
-  })
-
-  // save shortcuts
-  u('form').on('submit', () => {
-    browser.storage.local
-      .set({
-        settings: { ...settings, shortcuts: newShortcuts }
-      })
-      .then(() => log('new shortcuts set: ', newShortcuts), alertError)
-  })
+	// save shortcuts
+	$<HTMLFormElement>("form")!.addEventListener("submit", () => {
+		platform.storage.local
+			.set({ settings: { ...settings, shortcuts: newShortcuts } })
+			.then(() => log("new shortcuts set: ", newShortcuts), alertError);
+	});
 }
 
-function otherSettings (settings: Settings) {
-  const otherSettings = settings.other_settings
-  // init other settings
-  // init style of selected settings
-  u('#' + otherSettings.sokoban_style).attr('checked', true)
+function otherSettings(settings: Settings) {
+	const otherSettings = settings.other_settings;
+	// init other settings
+	// init style of selected settings
+	$<HTMLInputElement>("#" + otherSettings.sokoban_style)!.checked = true;
 
-  // style settings
-  u('[name=sokoban_style]').on('change', function (e) {
-    otherSettings.sokoban_style = e.target.value
-    saveOtherSettings()
-  })
+	// style settings
+	$$<HTMLInputElement>("[name=sokoban_style]").forEach((el) => {
+		el.addEventListener("change", () => {
+			otherSettings.sokoban_style =
+				el.value as Settings["other_settings"]["sokoban_style"];
+			saveOtherSettings();
+		});
+	});
 
-  // init char to display
-  u('form#char_to_display input').each(function (node) {
-    node.value = otherSettings.char_to_display[node.id]
-  })
+	// reset all settings
+	$<HTMLButtonElement>("#reset_all")!.addEventListener("click", () => {
+		const result = confirm(platform.i18n.getMessage("confirm_reset_all"));
+		if (result) {
+			platform.storage.local
+				.set({ settings: defaultSettings })
+				.then(() => log("reset all settings ok"), alertError);
+		}
+	});
 
-  u('form#char_to_display input').on('change', function (e) {
-    otherSettings.char_to_display[e.target.id] = e.target.value
-    saveOtherSettings()
-  })
+	// debug mode
+	$<HTMLInputElement>("#debug_checkbox")!.addEventListener("change", (e) => {
+		otherSettings.debug_mode = (e.target as HTMLInputElement).checked;
+		saveOtherSettings();
+	});
 
-  // reset char to display
-  u('#tab-other-settings .reset').on('click', function (e) {
-    const input = u(e.target).siblings('input').first()
-
-    input.value = defaultSettings.other_settings.char_to_display[input.id]
-  })
-
-  // reset all settings
-  u('#tab-other-settings #reset_all').on('click', function (e) {
-    const result = confirm(browser.i18n.getMessage('confirm_reset_all'))
-    if (result) {
-      browser.storage.local.set({ settings: defaultSettings }).then(
-        () => {
-          log('reset all settings ok')
-        },
-        (err) => {
-          alert(err)
-        }
-      )
-    }
-  })
-
-  // debug mode
-  u('#debug_checkbox').on('change', function (e) {
-    otherSettings.debug_mode = e.target.checked
-    saveOtherSettings()
-  })
-
-  function saveOtherSettings () {
-    browser.storage.local
-      .set({
-        settings: {
-          ...settings,
-          other_settings: otherSettings
-        }
-      })
-      .then(
-        () => {
-          log('other settings saved: ', otherSettings)
-        },
-        (err) => {
-          alertError(err)
-        }
-      )
-  }
+	function saveOtherSettings() {
+		platform.storage.local
+			.set({
+				settings: {
+					...settings,
+					other_settings: otherSettings,
+				},
+			})
+			.then(() => log("other settings saved: ", otherSettings), alertError);
+	}
 }
 
-function alertError (err) {
-  alert(browser.i18n.getMessage('error_while_saving'))
-  console.log(err)
+function alertError(err: unknown) {
+	alert(platform.i18n.getMessage("error_while_saving"));
+	console.log(err);
 }

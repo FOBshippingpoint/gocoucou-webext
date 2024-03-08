@@ -39,24 +39,6 @@
     "message": "RGB Gaming",
     "description": "Text of selected search result style."
   },
-  "char_to_display": {
-    "message": "Characters to display when the number of results is greater than $MAX_NUM$",
-    "description": "The legend of form.",
-    "placeholders": {
-      "MAX_NUM": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
-  },
-  "odd": {
-    "message": "When number is odd",
-    "description": "The description of odd in other settings."
-  },
-  "even": {
-    "message": "When number is even",
-    "description": "The description of even in other settings."
-  },
   "reset_all": {
     "message": "Reset all settings to default, including shortcuts",
     "description": "The description of reset all button in other settings."
@@ -105,18 +87,6 @@
     "message": "Open selected result in new tab and focus",
     "description": "The shortcut description for options page."
   },
-  "jump_to_result_keys": {
-    "message": "Jump to result keys",
-    "description": "The shortcut description for options page."
-  },
-  "next_page": {
-    "message": "Go to next page",
-    "description": "The shortcut description for options page."
-  },
-  "previous_page": {
-    "message": "Go to previous page",
-    "description": "The shortcut description for options page."
-  },
   "go_to_search_box": {
     "message": "Go to search box",
     "description": "The shortcut description for options page."
@@ -136,24 +106,6 @@
   "save_button": {
     "message": "Save",
     "description": "Save settings."
-  },
-  "too_long": {
-    "message": "Must be less than or equal to $MAX_NUM$.",
-    "description": "Jump to result keys invalid info.",
-    "placeholders": {
-      "MAX_NUM": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
-  },
-  "must_be_unique_list": {
-    "message": "Must be unique list.",
-    "description": "Jump to result keys invalid info."
-  },
-  "valid_shortcut": {
-    "message": "OK :)",
-    "description": "Jump to result keys valid info."
   },
   "error_while_saving": {
     "message": "An error occurred while saving, check the console for more information.",
